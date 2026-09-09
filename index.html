@@ -3,13 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="description" content="Hakamidzo Global — a marketplace connecting buyers, suppliers and partners to make sourcing, procurement and trade simple.">
   <title>Hakamidzo — Connect, let's go.</title>
-
-  <meta
-    name="description"
-    content="Hakamidzo Global — a marketplace connecting buyers, suppliers, businesses and partners to make sourcing, procurement and trade simple."
-  >
 
   <style>
     * {
@@ -18,20 +13,30 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --green: #123c32;
+      --green-dark: #08251f;
+      --green-light: #1c5748;
+      --cream: #f7f1e5;
+      --cream-light: #fcfaf4;
+      --gold: #c9a86a;
+      --gold-light: #e1c992;
+      --text: #17342d;
+      --muted: #68756f;
+      --white: #ffffff;
+      --border: rgba(18, 60, 50, 0.12);
     }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #f7f1e5;
-      color: #17342d;
-      line-height: 1.6;
+      background: var(--cream-light);
+      color: var(--text);
+      line-height: 1.5;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
     button,
@@ -39,56 +44,28 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* =========================
-       COLORS
-    ========================= */
-
-    :root {
-      --green: #123c32;
-      --green-dark: #08251f;
-      --green-light: #1c5748;
-
-      --cream: #f7f1e5;
-      --cream-light: #fcfaf4;
-
-      --gold: #c9a86a;
-      --gold-light: #e1c992;
-
-      --blue: #174a73;
-      --burgundy: #642f3c;
-      --charcoal: #293238;
-      --teal: #176b68;
-
-      --white: #ffffff;
-      --text: #17342d;
-      --muted: #68756f;
-
-      --shadow: 0 20px 50px rgba(8, 37, 31, 0.12);
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
+    /* HEADER */
 
     header {
-      width: 100%;
-      background: var(--green-dark);
-      color: white;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 100;
+      background: rgba(252, 250, 244, 0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
     }
 
-    .header-inner {
-      width: min(1180px, 92%);
-      margin: auto;
+    .nav {
       min-height: 76px;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
+      gap: 25px;
     }
 
     .brand {
@@ -98,224 +75,212 @@
       flex-shrink: 0;
     }
 
-    .brand-logo {
-      width: 48px;
-      height: 48px;
-      border: 2px solid var(--gold);
-      border-radius: 50%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      color: var(--gold);
+    .logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: var(--green);
+      color: var(--gold-light);
+      display: grid;
+      place-items: center;
       font-size: 25px;
       font-weight: 900;
+      box-shadow: 0 8px 20px rgba(18, 60, 50, 0.18);
     }
 
-    .brand-name {
-      font-size: 20px;
-      font-weight: 900;
+    .brand-text strong {
+      display: block;
+      font-size: 17px;
       letter-spacing: 2px;
+      color: var(--green);
     }
 
-    .brand-tagline {
+    .brand-text span {
+      display: block;
       font-size: 11px;
-      color: var(--gold-light);
+      color: var(--muted);
       margin-top: 1px;
     }
 
-    nav {
+    .nav-links {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
       gap: 8px;
-      flex-wrap: wrap;
     }
 
-    nav a {
-      color: rgba(255,255,255,0.9);
+    .nav-links a {
+      padding: 10px 14px;
+      border-radius: 10px;
       font-size: 13px;
       font-weight: 700;
-      padding: 11px 14px;
-      border-radius: 8px;
-      transition: 0.25s ease;
+      color: var(--text);
     }
 
-    nav a:hover {
-      background: rgba(255,255,255,0.08);
-      color: var(--gold-light);
+    .nav-links a:hover {
+      background: var(--cream);
     }
 
-    nav .nav-main {
-      background: var(--gold);
-      color: var(--green-dark);
+    .nav-account {
+      background: var(--green) !important;
+      color: white !important;
     }
 
-    nav .nav-main:hover {
-      background: var(--gold-light);
-      color: var(--green-dark);
-    }
-
-    /* =========================
-       HERO
-    ========================= */
+    /* HERO */
 
     .hero {
       background:
-        radial-gradient(circle at 80% 20%, rgba(201,168,106,0.14), transparent 28%),
-        linear-gradient(135deg, #08251f 0%, #123c32 55%, #17483d 100%);
-
-      color: white;
-      padding: 92px 0 85px;
+        radial-gradient(circle at 15% 15%, rgba(201,168,106,0.16), transparent 28%),
+        radial-gradient(circle at 85% 30%, rgba(28,87,72,0.12), transparent 30%),
+        var(--cream);
+      padding: 90px 0 70px;
       overflow: hidden;
     }
 
-    .hero-inner {
-      width: min(1180px, 92%);
-      margin: auto;
-
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 70px;
+      grid-template-columns: 1fr 0.9fr;
       align-items: center;
+      gap: 65px;
     }
 
     .eyebrow {
-      color: var(--gold-light);
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(18,60,50,0.08);
+      color: var(--green);
+      border: 1px solid rgba(18,60,50,0.12);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 11px;
       font-weight: 800;
-      margin-bottom: 18px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
     }
 
-    .hero h1 {
-      font-size: clamp(45px, 6vw, 78px);
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-size: clamp(44px, 6vw, 76px);
       line-height: 0.98;
       letter-spacing: -3px;
-      margin-bottom: 25px;
-      max-width: 700px;
+      color: var(--green-dark);
+      margin-bottom: 22px;
     }
 
-    .hero h1 span {
-      color: var(--gold-light);
+    h1 span {
+      color: var(--gold);
     }
 
-    .hero-text {
+    .hero-copy {
       max-width: 650px;
-      font-size: 18px;
-      color: rgba(255,255,255,0.78);
-      margin-bottom: 34px;
+      font-size: 19px;
+      color: var(--muted);
+      margin-bottom: 32px;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
-    .button {
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 50px;
-      padding: 0 22px;
-      border-radius: 9px;
+      min-height: 52px;
+      padding: 0 23px;
+      border-radius: 12px;
       font-size: 14px;
       font-weight: 800;
-      transition: 0.25s ease;
       border: 1px solid transparent;
+      transition: 0.2s ease;
     }
 
-    .button-primary {
-      background: var(--gold);
-      color: var(--green-dark);
-    }
-
-    .button-primary:hover {
-      background: var(--gold-light);
+    .btn:hover {
       transform: translateY(-2px);
     }
 
-    .button-secondary {
-      border-color: rgba(255,255,255,0.25);
+    .btn-primary {
+      background: var(--green);
       color: white;
+      box-shadow: 0 12px 25px rgba(18,60,50,0.18);
     }
 
-    .button-secondary:hover {
-      background: rgba(255,255,255,0.08);
-      transform: translateY(-2px);
+    .btn-secondary {
+      border-color: rgba(18,60,50,0.18);
+      color: var(--green);
+      background: rgba(255,255,255,0.45);
     }
 
-    /* =========================
-       NETWORK VISUAL
-    ========================= */
+    /* CONNECTION HUB */
 
     .network {
-      min-height: 390px;
+      min-height: 440px;
       position: relative;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      place-items: center;
     }
 
     .network-ring {
-      width: 310px;
-      height: 310px;
-      border: 1px solid rgba(225,201,146,0.3);
+      width: 350px;
+      height: 350px;
+      border: 1px solid rgba(18,60,50,0.13);
       border-radius: 50%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
       position: relative;
     }
 
     .network-ring::before {
       content: "";
       position: absolute;
-      width: 220px;
-      height: 220px;
-      border: 1px dashed rgba(225,201,146,0.28);
+      inset: 38px;
+      border: 1px dashed rgba(201,168,106,0.6);
       border-radius: 50%;
     }
 
-    .hub {
-      width: 105px;
-      height: 105px;
-      border-radius: 50%;
-
-      background: var(--gold);
-      color: var(--green-dark);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 50px;
+    .network-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 115px;
+      height: 115px;
+      border-radius: 32px;
+      background: var(--green);
+      color: var(--gold-light);
+      display: grid;
+      place-items: center;
+      font-size: 60px;
       font-weight: 900;
-
-      box-shadow:
-        0 0 0 12px rgba(201,168,106,0.08),
-        0 0 50px rgba(201,168,106,0.18);
-
-      position: relative;
+      box-shadow: 0 20px 45px rgba(18,60,50,0.24);
       z-index: 3;
     }
 
-    .network-line {
+    .connection-line {
       position: absolute;
-      height: 1px;
-      background: rgba(225,201,146,0.28);
-      width: 135px;
+      background: rgba(18,60,50,0.18);
+      transform-origin: left center;
+      height: 2px;
+      width: 125px;
+      left: 50%;
+      top: 50%;
       z-index: 1;
     }
 
     .line-top {
       transform: rotate(-90deg);
+    }
+
+    .line-right {
+      transform: rotate(0deg);
     }
 
     .line-bottom {
@@ -326,261 +291,392 @@
       transform: rotate(180deg);
     }
 
-    .line-right {
-      transform: rotate(0deg);
-    }
-
     .node {
       position: absolute;
-      width: 100px;
-      height: 100px;
-
-      border-radius: 20px;
-
+      width: 112px;
+      min-height: 105px;
+      border-radius: 22px;
+      background: white;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 35px rgba(18,60,50,0.10);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.16);
-
-      backdrop-filter: blur(5px);
-
-      text-align: center;
+      gap: 5px;
       z-index: 4;
+      text-align: center;
     }
 
-    .node-icon {
-      font-size: 30px;
-      margin-bottom: 4px;
+    .node .icon {
+      font-size: 31px;
+      line-height: 1;
     }
 
     .node strong {
-      font-size: 10px;
-      letter-spacing: 1px;
+      font-size: 12px;
+      color: var(--green);
+      letter-spacing: 0.4px;
+    }
+
+    .node small {
+      font-size: 9px;
+      color: var(--muted);
     }
 
     .node-top {
-      top: 0;
+      top: -5px;
       left: 50%;
       transform: translateX(-50%);
     }
 
+    .node-right {
+      right: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
     .node-bottom {
-      bottom: 0;
+      bottom: -5px;
       left: 50%;
       transform: translateX(-50%);
     }
 
     .node-left {
-      left: 0;
+      left: -18px;
       top: 50%;
       transform: translateY(-50%);
     }
 
-    .node-right {
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
+    /* SECTION */
 
-    /* =========================
-       SECTION
-    ========================= */
-
-    .section {
-      padding: 85px 0;
-    }
-
-    .section-light {
-      background: var(--cream-light);
-    }
-
-    .section-dark {
-      background: var(--green-dark);
-      color: white;
-    }
-
-    .section-inner {
-      width: min(1180px, 92%);
-      margin: auto;
+    section {
+      padding: 90px 0;
     }
 
     .section-heading {
-      max-width: 700px;
-      margin-bottom: 45px;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 45px;
     }
 
     .section-heading .eyebrow {
-      color: var(--green-light);
+      margin-bottom: 14px;
     }
 
-    .section-dark .section-heading .eyebrow {
-      color: var(--gold-light);
-    }
-
-    .section-heading h2 {
-      font-size: clamp(32px, 4vw, 52px);
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
       line-height: 1.05;
-      margin-bottom: 15px;
       letter-spacing: -1.5px;
+      color: var(--green-dark);
+      margin-bottom: 14px;
     }
 
     .section-heading p {
       color: var(--muted);
-      font-size: 17px;
+      font-size: 16px;
     }
 
-    .section-dark .section-heading p {
-      color: rgba(255,255,255,0.7);
-    }
-
-    /* =========================
-       GATEWAYS
-    ========================= */
+    /* GATEWAYS */
 
     .gateways {
+      background: var(--cream-light);
+    }
+
+    .gateway-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 18px;
     }
 
     .gateway {
-      min-height: 280px;
-      padding: 30px;
-      border-radius: 18px;
-      color: white;
-
+      min-height: 245px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-
-      box-shadow: 0 14px 35px rgba(0,0,0,0.12);
-
-      transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-
       position: relative;
       overflow: hidden;
+      transition: 0.25s ease;
+      box-shadow: 0 8px 25px rgba(18,60,50,0.05);
+    }
+
+    .gateway:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(18,60,50,0.12);
     }
 
     .gateway::after {
       content: "";
       position: absolute;
-      width: 150px;
-      height: 150px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
-      right: -65px;
-      bottom: -65px;
-      background: rgba(255,255,255,0.07);
-    }
-
-    .gateway:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 25px 55px rgba(0,0,0,0.18);
-    }
-
-    .gateway-green {
-      background: linear-gradient(145deg, #123c32, #1c5748);
-    }
-
-    .gateway-blue {
-      background: linear-gradient(145deg, #123b5b, #1d5b88);
-    }
-
-    .gateway-gold {
-      background: linear-gradient(145deg, #9a7736, #c9a86a);
-      color: #18251f;
-    }
-
-    .gateway-burgundy {
-      background: linear-gradient(145deg, #4e2630, #783b49);
-    }
-
-    .gateway-charcoal {
-      background: linear-gradient(145deg, #252d31, #3b474d);
-    }
-
-    .gateway-teal {
-      background: linear-gradient(145deg, #125654, #1b817d);
-    }
-
-    .primary-gateway {
-      outline: 3px solid rgba(201,168,106,0.35);
-      outline-offset: 3px;
+      right: -40px;
+      top: -40px;
     }
 
     .gateway-icon {
-      font-size: 46px;
-      margin-bottom: 20px;
-    }
-
-    .gateway-label {
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      opacity: 0.8;
-      margin-bottom: 8px;
+      width: 62px;
+      height: 62px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+      margin-bottom: 22px;
     }
 
     .gateway h3 {
-      font-size: 26px;
-      line-height: 1.05;
-      margin-bottom: 12px;
+      font-size: 19px;
+      margin-bottom: 9px;
     }
 
     .gateway p {
-      font-size: 14px;
-      opacity: 0.82;
-      max-width: 300px;
-    }
-
-    .gateway-action {
-      margin-top: 25px;
       font-size: 13px;
-      font-weight: 900;
+      max-width: 290px;
     }
 
-    /* =========================
-       HOW IT WORKS
-    ========================= */
+    .gateway-arrow {
+      margin-top: auto;
+      padding-top: 22px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+    }
 
-    .process {
+    /* DIFFERENT PROFESSIONAL CARD COLORS */
+
+    .gateway:nth-child(1) {
+      background: #e7f2ed;
+      border-color: #b8d6ca;
+    }
+
+    .gateway:nth-child(1)::after {
+      background: rgba(18,60,50,0.08);
+    }
+
+    .gateway:nth-child(1) .gateway-icon {
+      background: #c9e2d6;
+    }
+
+    .gateway:nth-child(1) h3 {
+      color: #123c32;
+    }
+
+    .gateway:nth-child(1) p {
+      color: #50665e;
+    }
+
+    .gateway:nth-child(1) .gateway-arrow {
+      color: #1c5748;
+    }
+
+
+    .gateway:nth-child(2) {
+      background: #e8eef7;
+      border-color: #bdcce0;
+    }
+
+    .gateway:nth-child(2)::after {
+      background: rgba(42,72,112,0.08);
+    }
+
+    .gateway:nth-child(2) .gateway-icon {
+      background: #cedbee;
+    }
+
+    .gateway:nth-child(2) h3 {
+      color: #29466d;
+    }
+
+    .gateway:nth-child(2) p {
+      color: #5c6878;
+    }
+
+    .gateway:nth-child(2) .gateway-arrow {
+      color: #42699b;
+    }
+
+
+    .gateway:nth-child(3) {
+      background: #f5eddc;
+      border-color: #dfcca1;
+    }
+
+    .gateway:nth-child(3)::after {
+      background: rgba(170,128,50,0.09);
+    }
+
+    .gateway:nth-child(3) .gateway-icon {
+      background: #ead8aa;
+    }
+
+    .gateway:nth-child(3) h3 {
+      color: #765a22;
+    }
+
+    .gateway:nth-child(3) p {
+      color: #756b57;
+    }
+
+    .gateway:nth-child(3) .gateway-arrow {
+      color: #9a762e;
+    }
+
+
+    .gateway:nth-child(4) {
+      background: #f3e7e7;
+      border-color: #d9bbbb;
+    }
+
+    .gateway:nth-child(4)::after {
+      background: rgba(115,55,55,0.08);
+    }
+
+    .gateway:nth-child(4) .gateway-icon {
+      background: #e4cccc;
+    }
+
+    .gateway:nth-child(4) h3 {
+      color: #713c3c;
+    }
+
+    .gateway:nth-child(4) p {
+      color: #756262;
+    }
+
+    .gateway:nth-child(4) .gateway-arrow {
+      color: #925353;
+    }
+
+
+    .gateway:nth-child(5) {
+      background: #e9e9eb;
+      border-color: #c9c9cd;
+    }
+
+    .gateway:nth-child(5)::after {
+      background: rgba(50,50,60,0.07);
+    }
+
+    .gateway:nth-child(5) .gateway-icon {
+      background: #d7d7db;
+    }
+
+    .gateway:nth-child(5) h3 {
+      color: #383b43;
+    }
+
+    .gateway:nth-child(5) p {
+      color: #666872;
+    }
+
+    .gateway:nth-child(5) .gateway-arrow {
+      color: #555963;
+    }
+
+
+    .gateway:nth-child(6) {
+      background: #e4f0f0;
+      border-color: #b7d3d3;
+    }
+
+    .gateway:nth-child(6)::after {
+      background: rgba(30,100,100,0.08);
+    }
+
+    .gateway:nth-child(6) .gateway-icon {
+      background: #c9dfdf;
+    }
+
+    .gateway:nth-child(6) h3 {
+      color: #215b5b;
+    }
+
+    .gateway:nth-child(6) p {
+      color: #5b7070;
+    }
+
+    .gateway:nth-child(6) .gateway-arrow {
+      color: #337878;
+    }
+
+    /* HAKAMIDZO WAY */
+
+    .way {
+      background: var(--green);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .way::before {
+      content: "H";
+      position: absolute;
+      right: -40px;
+      bottom: -100px;
+      font-size: 420px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.025);
+      line-height: 1;
+    }
+
+    .way .section-heading h2 {
+      color: white;
+    }
+
+    .way .section-heading p {
+      color: rgba(255,255,255,0.68);
+    }
+
+    .way .eyebrow {
+      color: var(--gold-light);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      gap: 15px;
+      position: relative;
+      z-index: 2;
     }
 
-    .process-card {
-      background: white;
-      border: 1px solid #e7dfcf;
-      border-radius: 15px;
-      padding: 28px;
-      box-shadow: 0 10px 30px rgba(8,37,31,0.06);
+    .step {
+      padding: 30px 22px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.055);
+      text-align: center;
     }
 
-    .process-number {
-      font-size: 13px;
+    .step-number {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      background: var(--gold);
+      color: var(--green-dark);
+      display: grid;
+      place-items: center;
       font-weight: 900;
-      color: var(--gold);
-      margin-bottom: 30px;
     }
 
-    .process-card h3 {
-      font-size: 21px;
-      margin-bottom: 10px;
+    .step h3 {
+      margin-bottom: 8px;
+      color: white;
+      font-size: 17px;
     }
 
-    .process-card p {
-      color: var(--muted);
-      font-size: 14px;
+    .step p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
     }
 
-    /* =========================
-       TRUST
-    ========================= */
+    /* TRUST */
 
     .trust-grid {
       display: grid;
@@ -590,164 +686,141 @@
 
     .trust-card {
       padding: 32px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      border-radius: 16px;
+      border-radius: 20px;
+      background: var(--cream);
+      border: 1px solid rgba(18,60,50,0.08);
     }
 
     .trust-icon {
-      font-size: 35px;
-      margin-bottom: 20px;
-    }
-
-    .trust-card h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
-    }
-
-    .trust-card p {
-      color: rgba(255,255,255,0.68);
-      font-size: 14px;
-    }
-
-    /* =========================
-       CTA
-    ========================= */
-
-    .cta {
-      padding: 75px 0;
-      background:
-        linear-gradient(135deg, #c9a86a, #e1c992);
-      color: var(--green-dark);
-    }
-
-    .cta-inner {
-      width: min(1000px, 92%);
-      margin: auto;
-      text-align: center;
-    }
-
-    .cta h2 {
-      font-size: clamp(35px, 5vw, 58px);
-      line-height: 1;
-      margin-bottom: 17px;
-      letter-spacing: -2px;
-    }
-
-    .cta p {
-      max-width: 650px;
-      margin: 0 auto 30px;
-      color: rgba(8,37,31,0.72);
-      font-size: 17px;
-    }
-
-    .cta .button {
-      background: var(--green-dark);
-      color: white;
-    }
-
-    .cta .button:hover {
-      background: var(--green);
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      background: #061b17;
-      color: white;
-      padding: 65px 0 25px;
-    }
-
-    .footer-grid {
-      width: min(1180px, 92%);
-      margin: auto;
-
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 45px;
-    }
-
-    .footer-brand p {
-      max-width: 350px;
-      color: rgba(255,255,255,0.58);
-      font-size: 14px;
-      margin-top: 18px;
-    }
-
-    footer h4 {
-      color: var(--gold-light);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      font-size: 34px;
       margin-bottom: 18px;
     }
 
-    footer ul {
-      list-style: none;
+    .trust-card h3 {
+      color: var(--green);
+      margin-bottom: 9px;
     }
 
-    footer li {
-      margin-bottom: 10px;
+    .trust-card p {
+      font-size: 13px;
+      color: var(--muted);
     }
 
-    footer li a {
-      color: rgba(255,255,255,0.62);
-      font-size: 14px;
+    /* CTA */
+
+    .cta {
+      padding: 25px 0 90px;
     }
 
-    footer li a:hover {
+    .cta-box {
+      background:
+        radial-gradient(circle at 90% 20%, rgba(201,168,106,0.25), transparent 30%),
+        var(--cream);
+      border: 1px solid rgba(18,60,50,0.1);
+      border-radius: 28px;
+      padding: 60px 45px;
+      text-align: center;
+    }
+
+    .cta-box h2 {
+      max-width: 700px;
+      margin: 0 auto 15px;
+    }
+
+    .cta-box p {
+      max-width: 600px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: var(--green-dark);
+      color: white;
+      padding: 55px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 45px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-brand .brand {
+      margin-bottom: 17px;
+    }
+
+    .footer-brand .brand-text strong {
       color: white;
     }
 
-    .footer-bottom {
-      width: min(1180px, 92%);
-      margin: 50px auto 0;
-      padding-top: 22px;
-      border-top: 1px solid rgba(255,255,255,0.1);
+    .footer-brand .brand-text span {
+      color: rgba(255,255,255,0.55);
+    }
 
+    .footer-brand p {
+      max-width: 320px;
+      color: rgba(255,255,255,0.55);
+      font-size: 13px;
+    }
+
+    .footer-column h4 {
+      color: var(--gold-light);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 17px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: rgba(255,255,255,0.62);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .copyright {
+      padding-top: 22px;
+      color: rgba(255,255,255,0.4);
+      font-size: 11px;
       display: flex;
       justify-content: space-between;
       gap: 20px;
-
-      color: rgba(255,255,255,0.4);
-      font-size: 12px;
+      flex-wrap: wrap;
     }
 
-    /* =========================
-       TABLET
-    ========================= */
+    /* MOBILE */
 
     @media (max-width: 900px) {
-
-      .header-inner {
-        min-height: 70px;
-      }
-
-      nav a {
-        padding: 9px 10px;
-        font-size: 12px;
+      .nav-links {
+        display: none;
       }
 
       .hero {
-        padding: 70px 0;
+        padding: 60px 0;
       }
 
-      .hero-inner {
+      .hero-grid {
         grid-template-columns: 1fr;
-        gap: 50px;
+        gap: 30px;
       }
 
       .network {
-        min-height: 360px;
+        min-height: 390px;
       }
 
-      .gateways {
+      .gateway-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .process {
+      .steps {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -760,43 +833,34 @@
       }
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
-
     @media (max-width: 600px) {
-
-      .header-inner {
-        padding: 12px 0;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
+      .container {
+        width: min(100% - 28px, 1180px);
       }
 
-      .brand {
-        justify-content: center;
+      .nav {
+        min-height: 68px;
       }
 
-      nav {
-        justify-content: center;
-        gap: 4px;
+      .logo {
+        width: 42px;
+        height: 42px;
       }
 
-      nav a {
-        font-size: 11px;
-        padding: 8px 9px;
+      .brand-text strong {
+        font-size: 15px;
       }
 
       .hero {
-        padding: 58px 0 65px;
+        padding: 48px 0 35px;
       }
 
-      .hero h1 {
-        font-size: 48px;
+      h1 {
+        font-size: 47px;
         letter-spacing: -2px;
       }
 
-      .hero-text {
+      .hero-copy {
         font-size: 16px;
       }
 
@@ -804,43 +868,33 @@
         flex-direction: column;
       }
 
-      .button {
+      .btn {
         width: 100%;
       }
 
       .network {
-        min-height: 330px;
-        transform: scale(0.88);
+        transform: scale(0.83);
+        margin: -30px -35px;
       }
 
-      .network-ring {
-        width: 275px;
-        height: 275px;
-      }
-
-      .node {
-        width: 82px;
-        height: 82px;
-      }
-
-      .node-icon {
-        font-size: 25px;
-      }
-
-      .gateways {
+      .gateway-grid {
         grid-template-columns: 1fr;
       }
 
-      .gateway {
-        min-height: 250px;
-      }
-
-      .process {
+      .steps {
         grid-template-columns: 1fr;
       }
 
-      .section {
+      section {
         padding: 65px 0;
+      }
+
+      .cta {
+        padding: 10px 0 65px;
+      }
+
+      .cta-box {
+        padding: 45px 22px;
       }
 
       .footer-grid {
@@ -848,37 +902,13 @@
         gap: 30px;
       }
 
-      .footer-bottom {
-        flex-direction: column;
-      }
-    }
-
-    /* =========================
-       SMALL PHONES
-    ========================= */
-
-    @media (max-width: 380px) {
-
-      .brand-name {
-        font-size: 17px;
+      .copyright {
+        display: block;
       }
 
-      nav a {
-        font-size: 10px;
-        padding: 7px 6px;
-      }
-
-      .hero h1 {
-        font-size: 42px;
-      }
-
-      .network {
-        transform: scale(0.78);
-        margin: -25px 0;
-      }
-
-      .gateway {
-        padding: 25px;
+      .copyright span {
+        display: block;
+        margin-bottom: 7px;
       }
     }
   </style>
@@ -886,128 +916,95 @@
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================== -->
-
+  <!-- HEADER -->
   <header>
-    <div class="header-inner">
+    <div class="container nav">
 
       <a href="/" class="brand">
-
-        <div class="brand-logo">H</div>
-
-        <div>
-          <div class="brand-name">HAKAMIDZO</div>
-          <div class="brand-tagline">Connect, let's go.</div>
+        <div class="logo">H</div>
+        <div class="brand-text">
+          <strong>HAKAMIDZO</strong>
+          <span>Connect, let's go.</span>
         </div>
-
       </a>
 
-      <nav>
-
-        <a href="/buyer-request" class="nav-main">
-          I NEED SOMETHING
-        </a>
-
-        <a href="#gateways">
-          EXPLORE
-        </a>
-
-        <a href="/supply">
-          I CAN SUPPLY
-        </a>
-
-        <a href="/hakamidzopartner">
-          PARTNER
-        </a>
-
+      <nav class="nav-links">
+        <a href="#gateways">I need something</a>
+        <a href="#gateways">Explore</a>
+        <a href="#gateways">I can supply</a>
+        <a href="#gateways">Partner</a>
+        <a href="#footer" class="nav-account">Account</a>
       </nav>
 
     </div>
   </header>
 
 
-  <!-- =========================
-       HERO
-  ========================== -->
-
+  <!-- HERO -->
   <main>
 
     <section class="hero">
-
-      <div class="hero-inner">
+      <div class="container hero-grid">
 
         <div>
-
-          <div class="eyebrow">
-            Hakamidzo Global Marketplace
-          </div>
+          <div class="eyebrow">GLOBAL MARKETPLACE</div>
 
           <h1>
-            Where the world
-            <span>connects.</span>
+            ONE PLATFORM.<br>
+            MANY <span>POSSIBILITIES.</span>
           </h1>
 
-          <p class="hero-text">
-            Hakamidzo connects buyers, suppliers, businesses and partners
-            to make sourcing, procurement and trade simple.
+          <p class="hero-copy">
+            Hakamidzo brings buyers, businesses, suppliers and partners
+            together to make sourcing, procurement and trade simple.
           </p>
 
           <div class="hero-buttons">
-
-            <a
-              href="/buyer-request"
-              class="button button-primary"
-            >
-              I NEED SOMETHING →
+            <a class="btn btn-primary" href="#gateways">
+              Explore Hakamidzo
             </a>
 
-            <a
-              href="#gateways"
-              class="button button-secondary"
-            >
-              EXPLORE HAKAMIDZO
+            <a class="btn btn-secondary" href="#gateways">
+              I need something
             </a>
-
           </div>
-
         </div>
 
 
-        <!-- NETWORK -->
-
+        <!-- CONNECTION VISUAL -->
         <div class="network">
 
           <div class="network-ring">
 
-            <div class="network-line line-top"></div>
-            <div class="network-line line-bottom"></div>
-            <div class="network-line line-left"></div>
-            <div class="network-line line-right"></div>
+            <div class="connection-line line-top"></div>
+            <div class="connection-line line-right"></div>
+            <div class="connection-line line-bottom"></div>
+            <div class="connection-line line-left"></div>
 
-            <div class="hub">
-              H
-            </div>
+            <div class="network-center">H</div>
 
             <div class="node node-top">
-              <div class="node-icon">🛒</div>
+              <div class="icon">🛒</div>
               <strong>BUYERS</strong>
-            </div>
-
-            <div class="node node-bottom">
-              <div class="node-icon">🤝</div>
-              <strong>PARTNERS</strong>
-            </div>
-
-            <div class="node node-left">
-              <div class="node-icon">🏢</div>
-              <strong>BUSINESSES</strong>
+              <small>Need something?</small>
             </div>
 
             <div class="node node-right">
-              <div class="node-icon">📦</div>
+              <div class="icon">🏢</div>
+              <strong>BUSINESSES</strong>
+              <small>Grow & trade</small>
+            </div>
+
+            <div class="node node-bottom">
+              <div class="icon">📦</div>
               <strong>SUPPLIERS</strong>
+              <small>Can supply</small>
+            </div>
+
+            <div class="node node-left">
+              <div class="icon">🤝</div>
+              <strong>PARTNERS</strong>
+              <small>Help connect</small>
             </div>
 
           </div>
@@ -1015,70 +1012,26 @@
         </div>
 
       </div>
-
     </section>
 
 
-    <!-- =========================
-         GATEWAYS
-    ========================== -->
-
-    <section
-      class="section section-light"
-      id="gateways"
-    >
-
-      <div class="section-inner">
+    <!-- GATEWAYS -->
+    <section class="gateways" id="gateways">
+      <div class="container">
 
         <div class="section-heading">
-
-          <div class="eyebrow">
-            Enter Hakamidzo
-          </div>
-
-          <h2>
-            Choose your gateway.
-          </h2>
-
+          <div class="eyebrow">START HERE</div>
+          <h2>Where the world connects.</h2>
           <p>
-            Whether you need something, can supply something, or want
-            to help make transactions happen, there is a place for you
-            inside the Hakamidzo network.
+            Choose your gateway into Hakamidzo.
           </p>
-
         </div>
 
+        <div class="gateway-grid">
 
-        <div class="gateways">
-
-
-          <!-- BUYER -->
-
-          <a
-            href="/buyer-request"
-            class="gateway gateway-green primary-gateway"
-          >
-
-            <div>
-
-              <div class="gateway-icon">
-                🛒
-              </div>
-
-              <div class="gateway-label">
-                BUYER
-              </div>
-
-              <h3>
-                I NEED SOMETHING
-              </h3>
-
-              <p>
-                Tell Hakamidzo what you are looking for and let the
-                network help connect the right supply.
-              </p>
-
-            </div>
-
-            <div class="gateway-action">
-              SUBMIT A R
+          <a class="gateway" href="/buyer-request">
+            <div class="gateway-icon">🛒</div>
+            <h3>I NEED SOMETHING</h3>
+            <p>
+              Tell us what you are looking for and let the Hakamidzo network help source it.
+            </p>
