@@ -4,24 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="description"
-    content="Hakamidzo Global — a marketplace connecting buyers, suppliers and partners to make sourcing, procurement and trade simple."
-  >
-
   <title>Hakamidzo — Connect, let's go.</title>
 
-  <style>
-    /* =========================================================
-       HAKAMIDZO GLOBAL
-       Main storefront
-       ========================================================= */
+  <meta
+    name="description"
+    content="Hakamidzo Global — a marketplace connecting buyers, suppliers, businesses and partners to make sourcing, procurement and trade simple."
+  >
 
+  <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f1e5;
+      color: #17342d;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* =========================
+       COLORS
+    ========================= */
 
     :root {
       --green: #123c32;
@@ -34,410 +54,268 @@
       --gold: #c9a86a;
       --gold-light: #e1c992;
 
+      --blue: #174a73;
+      --burgundy: #642f3c;
+      --charcoal: #293238;
+      --teal: #176b68;
+
+      --white: #ffffff;
       --text: #17342d;
       --muted: #68756f;
 
-      --white: #ffffff;
-
-      --border: rgba(18, 60, 50, 0.12);
-
-      --shadow:
-        0 15px 40px rgba(18, 60, 50, 0.10);
+      --shadow: 0 20px 50px rgba(8, 37, 31, 0.12);
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-      background: var(--cream-light);
-      color: var(--text);
-      line-height: 1.5;
-
-      overflow-x: hidden;
-    }
-
-    img {
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .container {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-
-    /* =========================================================
+    /* =========================
        HEADER
-       ========================================================= */
+    ========================= */
 
     header {
+      width: 100%;
+      background: var(--green-dark);
+      color: white;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       position: sticky;
       top: 0;
       z-index: 1000;
-
-      background:
-        rgba(252, 250, 244, 0.96);
-
-      border-bottom:
-        1px solid var(--border);
-
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
     }
 
-    .nav {
+    .header-inner {
+      width: min(1180px, 92%);
+      margin: auto;
       min-height: 76px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      gap: 25px;
+      gap: 30px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-
       flex-shrink: 0;
     }
 
-    .logo {
-      width: 46px;
-      height: 46px;
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
 
-      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      background: var(--green);
-      color: var(--gold-light);
-
-      display: grid;
-      place-items: center;
-
+      color: var(--gold);
       font-size: 25px;
       font-weight: 900;
-
-      box-shadow:
-        0 8px 20px rgba(18, 60, 50, 0.18);
     }
 
-    .brand-text strong {
-      display: block;
-
-      font-size: 17px;
+    .brand-name {
+      font-size: 20px;
+      font-weight: 900;
       letter-spacing: 2px;
-
-      color: var(--green);
     }
 
-    .brand-text span {
-      display: block;
-
+    .brand-tagline {
       font-size: 11px;
-      color: var(--muted);
-
+      color: var(--gold-light);
       margin-top: 1px;
     }
 
-    .nav-links {
+    nav {
       display: flex;
       align-items: center;
-
-      gap: 6px;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
-    .nav-links a {
-      padding: 10px 14px;
-
-      border-radius: 10px;
-
+    nav a {
+      color: rgba(255,255,255,0.9);
       font-size: 13px;
-      font-weight: 800;
-
-      color: var(--text);
-
-      transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
+      font-weight: 700;
+      padding: 11px 14px;
+      border-radius: 8px;
+      transition: 0.25s ease;
     }
 
-    .nav-links a:hover {
-      background: var(--cream);
-      color: var(--green);
-      transform: translateY(-1px);
+    nav a:hover {
+      background: rgba(255,255,255,0.08);
+      color: var(--gold-light);
     }
 
+    nav .nav-main {
+      background: var(--gold);
+      color: var(--green-dark);
+    }
 
-    /* =========================================================
+    nav .nav-main:hover {
+      background: var(--gold-light);
+      color: var(--green-dark);
+    }
+
+    /* =========================
        HERO
-       ========================================================= */
+    ========================= */
 
     .hero {
-      position: relative;
-
       background:
-        radial-gradient(
-          circle at 12% 15%,
-          rgba(201, 168, 106, 0.18),
-          transparent 28%
-        ),
-        radial-gradient(
-          circle at 88% 25%,
-          rgba(28, 87, 72, 0.13),
-          transparent 30%
-        ),
-        var(--cream);
+        radial-gradient(circle at 80% 20%, rgba(201,168,106,0.14), transparent 28%),
+        linear-gradient(135deg, #08251f 0%, #123c32 55%, #17483d 100%);
 
-      padding: 90px 0 75px;
-
+      color: white;
+      padding: 92px 0 85px;
       overflow: hidden;
     }
 
-    .hero-grid {
+    .hero-inner {
+      width: min(1180px, 92%);
+      margin: auto;
+
       display: grid;
-
-      grid-template-columns:
-        minmax(0, 1fr)
-        minmax(420px, 0.9fr);
-
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 70px;
       align-items: center;
-
-      gap: 60px;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      background:
-        rgba(18, 60, 50, 0.08);
-
-      color: var(--green);
-
-      border:
-        1px solid rgba(18, 60, 50, 0.12);
-
-      border-radius: 999px;
-
-      padding: 8px 14px;
-
-      font-size: 11px;
-      font-weight: 900;
-
-      letter-spacing: 1.5px;
+      color: var(--gold-light);
       text-transform: uppercase;
-
-      margin-bottom: 22px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      font-weight: 800;
+      margin-bottom: 18px;
     }
 
-    .eyebrow::before {
-      content: "";
-
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: var(--gold);
-    }
-
-    h1 {
-      font-size:
-        clamp(44px, 6vw, 76px);
-
+    .hero h1 {
+      font-size: clamp(45px, 6vw, 78px);
       line-height: 0.98;
-
       letter-spacing: -3px;
-
-      color: var(--green-dark);
-
-      margin-bottom: 23px;
+      margin-bottom: 25px;
+      max-width: 700px;
     }
 
-    h1 span {
-      color: var(--gold);
+    .hero h1 span {
+      color: var(--gold-light);
     }
 
-    .hero-copy {
+    .hero-text {
       max-width: 650px;
-
-      font-size: 19px;
-
-      color: var(--muted);
-
-      margin-bottom: 32px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 34px;
     }
 
     .hero-buttons {
       display: flex;
-      align-items: center;
-
-      gap: 12px;
-
+      gap: 14px;
       flex-wrap: wrap;
     }
 
-    .btn {
-      min-height: 53px;
-
+    .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-
-      padding: 0 24px;
-
-      border-radius: 12px;
-
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 9px;
       font-size: 14px;
-      font-weight: 900;
-
-      border:
-        1px solid transparent;
-
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+      font-weight: 800;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
     }
 
-    .btn:hover {
+    .button-primary {
+      background: var(--gold);
+      color: var(--green-dark);
+    }
+
+    .button-primary:hover {
+      background: var(--gold-light);
       transform: translateY(-2px);
     }
 
-    .btn-primary {
-      background: var(--green);
+    .button-secondary {
+      border-color: rgba(255,255,255,0.25);
       color: white;
-
-      box-shadow:
-        0 12px 28px rgba(18, 60, 50, 0.20);
     }
 
-    .btn-primary:hover {
-      background: var(--green-light);
-
-      box-shadow:
-        0 16px 32px rgba(18, 60, 50, 0.25);
+    .button-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
     }
 
-    .btn-secondary {
-      background: rgba(255,255,255,0.55);
-
-      border-color:
-        rgba(18, 60, 50, 0.18);
-
-      color: var(--green);
-    }
-
-
-    /* =========================================================
-       CONNECTION NETWORK
-       ========================================================= */
+    /* =========================
+       NETWORK VISUAL
+    ========================= */
 
     .network {
-      min-height: 450px;
-
+      min-height: 390px;
       position: relative;
 
-      display: grid;
-      place-items: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .network-ring {
-      width: 350px;
-      height: 350px;
-
-      border:
-        1px solid rgba(18, 60, 50, 0.13);
-
+      width: 310px;
+      height: 310px;
+      border: 1px solid rgba(225,201,146,0.3);
       border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       position: relative;
     }
 
     .network-ring::before {
       content: "";
-
       position: absolute;
-
-      inset: 38px;
-
-      border:
-        1px dashed rgba(201, 168, 106, 0.65);
-
+      width: 220px;
+      height: 220px;
+      border: 1px dashed rgba(225,201,146,0.28);
       border-radius: 50%;
     }
 
-    .network-center {
-      position: absolute;
+    .hub {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
 
-      left: 50%;
-      top: 50%;
+      background: var(--gold);
+      color: var(--green-dark);
 
-      transform:
-        translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      width: 115px;
-      height: 115px;
-
-      border-radius: 32px;
-
-      background: var(--green);
-      color: var(--gold-light);
-
-      display: grid;
-      place-items: center;
-
-      font-size: 60px;
+      font-size: 50px;
       font-weight: 900;
 
       box-shadow:
-        0 20px 45px rgba(18, 60, 50, 0.24);
+        0 0 0 12px rgba(201,168,106,0.08),
+        0 0 50px rgba(201,168,106,0.18);
 
+      position: relative;
       z-index: 3;
     }
 
-    .connection-line {
+    .network-line {
       position: absolute;
-
-      background:
-        rgba(18, 60, 50, 0.18);
-
-      transform-origin: left center;
-
-      height: 2px;
-      width: 125px;
-
-      left: 50%;
-      top: 50%;
-
+      height: 1px;
+      background: rgba(225,201,146,0.28);
+      width: 135px;
       z-index: 1;
     }
 
     .line-top {
       transform: rotate(-90deg);
-    }
-
-    .line-right {
-      transform: rotate(0deg);
     }
 
     .line-bottom {
@@ -448,832 +326,759 @@
       transform: rotate(180deg);
     }
 
+    .line-right {
+      transform: rotate(0deg);
+    }
+
     .node {
       position: absolute;
+      width: 100px;
+      height: 100px;
 
-      width: 112px;
-      min-height: 105px;
-
-      border-radius: 22px;
-
-      background: white;
-
-      border:
-        1px solid var(--border);
-
-      box-shadow:
-        0 14px 35px rgba(18, 60, 50, 0.10);
+      border-radius: 20px;
 
       display: flex;
       flex-direction: column;
-
       align-items: center;
       justify-content: center;
 
-      gap: 5px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.16);
 
-      z-index: 4;
+      backdrop-filter: blur(5px);
 
       text-align: center;
+      z-index: 4;
     }
 
-    .node .icon {
-      font-size: 31px;
-      line-height: 1;
+    .node-icon {
+      font-size: 30px;
+      margin-bottom: 4px;
     }
 
     .node strong {
-      font-size: 12px;
-      color: var(--green);
-
-      letter-spacing: 0.4px;
-    }
-
-    .node small {
-      font-size: 9px;
-      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1px;
     }
 
     .node-top {
-      top: -5px;
+      top: 0;
       left: 50%;
-
-      transform:
-        translateX(-50%);
-    }
-
-    .node-right {
-      right: -18px;
-      top: 50%;
-
-      transform:
-        translateY(-50%);
+      transform: translateX(-50%);
     }
 
     .node-bottom {
-      bottom: -5px;
+      bottom: 0;
       left: 50%;
-
-      transform:
-        translateX(-50%);
+      transform: translateX(-50%);
     }
 
     .node-left {
-      left: -18px;
+      left: 0;
       top: 50%;
-
-      transform:
-        translateY(-50%);
+      transform: translateY(-50%);
     }
 
+    .node-right {
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
 
-    /* =========================================================
-       GENERAL SECTIONS
-       ========================================================= */
+    /* =========================
+       SECTION
+    ========================= */
 
-    section {
-      padding: 90px 0;
+    .section {
+      padding: 85px 0;
+    }
+
+    .section-light {
+      background: var(--cream-light);
+    }
+
+    .section-dark {
+      background: var(--green-dark);
+      color: white;
+    }
+
+    .section-inner {
+      width: min(1180px, 92%);
+      margin: auto;
     }
 
     .section-heading {
-      max-width: 720px;
-
-      text-align: center;
-
-      margin:
-        0 auto 48px;
+      max-width: 700px;
+      margin-bottom: 45px;
     }
 
     .section-heading .eyebrow {
-      margin-bottom: 14px;
+      color: var(--green-light);
     }
 
-    h2 {
-      font-size:
-        clamp(30px, 4vw, 48px);
+    .section-dark .section-heading .eyebrow {
+      color: var(--gold-light);
+    }
 
+    .section-heading h2 {
+      font-size: clamp(32px, 4vw, 52px);
       line-height: 1.05;
-
+      margin-bottom: 15px;
       letter-spacing: -1.5px;
-
-      color: var(--green-dark);
-
-      margin-bottom: 14px;
     }
 
     .section-heading p {
       color: var(--muted);
-
-      font-size: 16px;
+      font-size: 17px;
     }
 
+    .section-dark .section-heading p {
+      color: rgba(255,255,255,0.7);
+    }
 
-    /* =========================================================
+    /* =========================
        GATEWAYS
-       ========================================================= */
+    ========================= */
 
     .gateways {
-      background: var(--cream-light);
-    }
-
-    .gateway-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
     .gateway {
-      min-height: 285px;
-
-      position: relative;
-
-      overflow: hidden;
-
-      border-radius: 24px;
-
+      min-height: 280px;
       padding: 30px;
+      border-radius: 18px;
+      color: white;
 
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
 
-      border:
-        1px solid rgba(255,255,255,0.25);
-
-      color: white;
-
-      box-shadow:
-        0 12px 30px rgba(18, 60, 50, 0.10);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.12);
 
       transition:
         transform 0.25s ease,
         box-shadow 0.25s ease;
-    }
 
-    .gateway:hover {
-      transform:
-        translateY(-7px);
-
-      box-shadow:
-        0 24px 48px rgba(18, 60, 50, 0.18);
-    }
-
-    .gateway::before {
-      content: "";
-
-      position: absolute;
-
-      width: 190px;
-      height: 190px;
-
-      border-radius: 50%;
-
-      right: -75px;
-      top: -75px;
-
-      background:
-        rgba(255,255,255,0.10);
+      position: relative;
+      overflow: hidden;
     }
 
     .gateway::after {
       content: "";
-
       position: absolute;
-
-      width: 120px;
-      height: 120px;
-
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
+      right: -65px;
+      bottom: -65px;
+      background: rgba(255,255,255,0.07);
+    }
 
-      left: -55px;
-      bottom: -60px;
+    .gateway:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 25px 55px rgba(0,0,0,0.18);
+    }
 
-      background:
-        rgba(255,255,255,0.06);
+    .gateway-green {
+      background: linear-gradient(145deg, #123c32, #1c5748);
+    }
+
+    .gateway-blue {
+      background: linear-gradient(145deg, #123b5b, #1d5b88);
+    }
+
+    .gateway-gold {
+      background: linear-gradient(145deg, #9a7736, #c9a86a);
+      color: #18251f;
+    }
+
+    .gateway-burgundy {
+      background: linear-gradient(145deg, #4e2630, #783b49);
+    }
+
+    .gateway-charcoal {
+      background: linear-gradient(145deg, #252d31, #3b474d);
+    }
+
+    .gateway-teal {
+      background: linear-gradient(145deg, #125654, #1b817d);
+    }
+
+    .primary-gateway {
+      outline: 3px solid rgba(201,168,106,0.35);
+      outline-offset: 3px;
     }
 
     .gateway-icon {
-      width: 72px;
-      height: 72px;
+      font-size: 46px;
+      margin-bottom: 20px;
+    }
 
-      border-radius: 20px;
-
-      display: grid;
-      place-items: center;
-
-      background:
-        rgba(255,255,255,0.16);
-
-      border:
-        1px solid rgba(255,255,255,0.18);
-
-      font-size: 38px;
-
-      margin-bottom: 24px;
-
-      position: relative;
-      z-index: 2;
+    .gateway-label {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      opacity: 0.8;
+      margin-bottom: 8px;
     }
 
     .gateway h3 {
-      position: relative;
-      z-index: 2;
-
-      font-size: 20px;
-
-      letter-spacing: 0.2px;
-
-      margin-bottom: 10px;
+      font-size: 26px;
+      line-height: 1.05;
+      margin-bottom: 12px;
     }
 
     .gateway p {
-      position: relative;
-      z-index: 2;
+      font-size: 14px;
+      opacity: 0.82;
+      max-width: 300px;
+    }
 
-      max-width: 310px;
-
+    .gateway-action {
+      margin-top: 25px;
       font-size: 13px;
-
-      line-height: 1.65;
-
-      color:
-        rgba(255,255,255,0.78);
-    }
-
-    .gateway-arrow {
-      position: relative;
-      z-index: 2;
-
-      margin-top: auto;
-
-      padding-top: 25px;
-
-      font-size: 11px;
-
       font-weight: 900;
-
-      letter-spacing: 1px;
-
-      color: rgba(255,255,255,0.92);
     }
 
+    /* =========================
+       HOW IT WORKS
+    ========================= */
 
-    /* INDIVIDUAL CARD COLORS */
-
-    .gateway-buyer {
-      background:
-        linear-gradient(
-          145deg,
-          #123c32,
-          #1b5a4a
-        );
-    }
-
-    .gateway-explore {
-      background:
-        linear-gradient(
-          145deg,
-          #17465a,
-          #236f7c
-        );
-    }
-
-    .gateway-supplier {
-      background:
-        linear-gradient(
-          145deg,
-          #9a7130,
-          #c9a86a
-        );
-
-      color: #fff;
-    }
-
-    .gateway-partner {
-      background:
-        linear-gradient(
-          145deg,
-          #633b48,
-          #8a5260
-        );
-    }
-
-    .gateway-account {
-      background:
-        linear-gradient(
-          145deg,
-          #303b3d,
-          #4c5a5d
-        );
-    }
-
-    .gateway-support {
-      background:
-        linear-gradient(
-          145deg,
-          #31536b,
-          #4f7890
-        );
-    }
-
-
-    /* =========================================================
-       HAKAMIDZO WAY
-       ========================================================= */
-
-    .way {
-      background: var(--green);
-
-      color: white;
-
-      position: relative;
-
-      overflow: hidden;
-    }
-
-    .way::before {
-      content: "H";
-
-      position: absolute;
-
-      right: -40px;
-      bottom: -100px;
-
-      font-size: 420px;
-      font-weight: 900;
-
-      color:
-        rgba(255,255,255,0.025);
-
-      line-height: 1;
-    }
-
-    .way .section-heading h2 {
-      color: white;
-    }
-
-    .way .section-heading p {
-      color:
-        rgba(255,255,255,0.68);
-    }
-
-    .way .eyebrow {
-      color: var(--gold-light);
-
-      background:
-        rgba(255,255,255,0.08);
-
-      border-color:
-        rgba(255,255,255,0.12);
-    }
-
-    .steps {
+    .process {
       display: grid;
-
-      grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-      gap: 15px;
-
-      position: relative;
-
-      z-index: 2;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
     }
 
-    .step {
-      padding: 30px 22px;
-
-      border:
-        1px solid rgba(255,255,255,0.12);
-
-      border-radius: 18px;
-
-      background:
-        rgba(255,255,255,0.055);
-
-      text-align: center;
+    .process-card {
+      background: white;
+      border: 1px solid #e7dfcf;
+      border-radius: 15px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(8,37,31,0.06);
     }
 
-    .step-number {
-      width: 45px;
-      height: 45px;
-
-      border-radius: 50%;
-
-      margin:
-        0 auto 18px;
-
-      background: var(--gold);
-
-      color: var(--green-dark);
-
-      display: grid;
-      place-items: center;
-
+    .process-number {
+      font-size: 13px;
       font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 30px;
     }
 
-    .step h3 {
-      margin-bottom: 8px;
-
-      color: white;
-
-      font-size: 17px;
+    .process-card h3 {
+      font-size: 21px;
+      margin-bottom: 10px;
     }
 
-    .step p {
-      font-size: 12px;
-
-      color:
-        rgba(255,255,255,0.65);
+    .process-card p {
+      color: var(--muted);
+      font-size: 14px;
     }
 
-
-    /* =========================================================
+    /* =========================
        TRUST
-       ========================================================= */
+    ========================= */
 
     .trust-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
     .trust-card {
       padding: 32px;
-
-      border-radius: 20px;
-
-      background: var(--cream);
-
-      border:
-        1px solid rgba(18,60,50,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      border-radius: 16px;
     }
 
     .trust-icon {
-      font-size: 34px;
-
-      margin-bottom: 18px;
+      font-size: 35px;
+      margin-bottom: 20px;
     }
 
     .trust-card h3 {
-      color: var(--green);
-
-      margin-bottom: 9px;
+      margin-bottom: 10px;
+      font-size: 20px;
     }
 
     .trust-card p {
-      font-size: 13px;
-
-      color: var(--muted);
+      color: rgba(255,255,255,0.68);
+      font-size: 14px;
     }
 
-
-    /* =========================================================
+    /* =========================
        CTA
-       ========================================================= */
+    ========================= */
 
     .cta {
-      padding:
-        25px 0 90px;
+      padding: 75px 0;
+      background:
+        linear-gradient(135deg, #c9a86a, #e1c992);
+      color: var(--green-dark);
     }
 
-    .cta-box {
-      background:
-        radial-gradient(
-          circle at 90% 20%,
-          rgba(201,168,106,0.25),
-          transparent 30%
-        ),
-        var(--cream);
-
-      border:
-        1px solid rgba(18,60,50,0.10);
-
-      border-radius: 28px;
-
-      padding:
-        60px 45px;
-
+    .cta-inner {
+      width: min(1000px, 92%);
+      margin: auto;
       text-align: center;
     }
 
-    .cta-box h2 {
-      max-width: 700px;
-
-      margin:
-        0 auto 15px;
+    .cta h2 {
+      font-size: clamp(35px, 5vw, 58px);
+      line-height: 1;
+      margin-bottom: 17px;
+      letter-spacing: -2px;
     }
 
-    .cta-box p {
-      max-width: 600px;
-
-      margin:
-        0 auto 28px;
-
-      color: var(--muted);
+    .cta p {
+      max-width: 650px;
+      margin: 0 auto 30px;
+      color: rgba(8,37,31,0.72);
+      font-size: 17px;
     }
 
+    .cta .button {
+      background: var(--green-dark);
+      color: white;
+    }
 
-    /* =========================================================
+    .cta .button:hover {
+      background: var(--green);
+    }
+
+    /* =========================
        FOOTER
-       ========================================================= */
+    ========================= */
 
     footer {
-      background: var(--green-dark);
-
+      background: #061b17;
       color: white;
-
-      padding:
-        55px 0 25px;
+      padding: 65px 0 25px;
     }
 
     .footer-grid {
+      width: min(1180px, 92%);
+      margin: auto;
+
       display: grid;
-
-      grid-template-columns:
-        1.5fr 1fr 1fr 1fr;
-
-      gap: 40px;
-
-      padding-bottom: 45px;
-
-      border-bottom:
-        1px solid rgba(255,255,255,0.10);
-    }
-
-    .footer-brand .brand {
-      margin-bottom: 17px;
-    }
-
-    .footer-brand .brand-text strong {
-      color: white;
-    }
-
-    .footer-brand .brand-text span {
-      color:
-        rgba(255,255,255,0.55);
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 45px;
     }
 
     .footer-brand p {
-      max-width: 320px;
-
-      color:
-        rgba(255,255,255,0.55);
-
-      font-size: 13px;
+      max-width: 350px;
+      color: rgba(255,255,255,0.58);
+      font-size: 14px;
+      margin-top: 18px;
     }
 
-    .footer-column h4 {
+    footer h4 {
       color: var(--gold-light);
-
       font-size: 12px;
-
-      letter-spacing: 1px;
-
       text-transform: uppercase;
-
-      margin-bottom: 17px;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
     }
 
-    .footer-column a {
-      display: block;
+    footer ul {
+      list-style: none;
+    }
 
-      color:
-        rgba(255,255,255,0.62);
-
-      font-size: 13px;
-
+    footer li {
       margin-bottom: 10px;
     }
 
-    .footer-column a:hover {
+    footer li a {
+      color: rgba(255,255,255,0.62);
+      font-size: 14px;
+    }
+
+    footer li a:hover {
       color: white;
     }
 
-    .copyright {
+    .footer-bottom {
+      width: min(1180px, 92%);
+      margin: 50px auto 0;
       padding-top: 22px;
-
-      color:
-        rgba(255,255,255,0.4);
-
-      font-size: 11px;
+      border-top: 1px solid rgba(255,255,255,0.1);
 
       display: flex;
-
       justify-content: space-between;
-
       gap: 20px;
 
-      flex-wrap: wrap;
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
     }
 
+    /* =========================
+       TABLET
+    ========================= */
 
-    /* =========================================================
-       TABLETS
-       ========================================================= */
+    @media (max-width: 900px) {
 
-    @media (max-width: 1000px) {
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-
-        gap: 35px;
-      }
-
-      .hero-copy {
-        max-width: 700px;
-      }
-
-      .network {
-        min-height: 410px;
-      }
-
-      .gateway-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-
-      .steps {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-
-      .trust-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-
-      .footer-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-    }
-
-
-    /* =========================================================
-       MOBILE
-       ========================================================= */
-
-    @media (max-width: 700px) {
-
-      .container {
-        width:
-          min(100% - 28px, 1180px);
-      }
-
-      header {
-        position: relative;
-      }
-
-      .nav {
+      .header-inner {
         min-height: 70px;
       }
 
-      .nav-links {
-        display: none;
-      }
-
-      .logo {
-        width: 43px;
-        height: 43px;
-
-        border-radius: 13px;
-
-        font-size: 23px;
-      }
-
-      .brand-text strong {
-        font-size: 15px;
-      }
-
-      .brand-text span {
-        font-size: 10px;
+      nav a {
+        padding: 9px 10px;
+        font-size: 12px;
       }
 
       .hero {
-        padding:
-          52px 0 35px;
+        padding: 70px 0;
       }
 
-      h1 {
-        font-size: 48px;
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
 
+      .network {
+        min-height: 360px;
+      }
+
+      .gateways {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+      .header-inner {
+        padding: 12px 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 4px;
+      }
+
+      nav a {
+        font-size: 11px;
+        padding: 8px 9px;
+      }
+
+      .hero {
+        padding: 58px 0 65px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
         letter-spacing: -2px;
       }
 
-      .hero-copy {
+      .hero-text {
         font-size: 16px;
       }
 
       .hero-buttons {
         flex-direction: column;
-
-        align-items: stretch;
       }
 
-      .btn {
+      .button {
         width: 100%;
       }
 
       .network {
-        min-height: 350px;
-
-        transform:
-          scale(0.82);
-
-        margin:
-          -30px -40px;
+        min-height: 330px;
+        transform: scale(0.88);
       }
 
-      section {
-        padding:
-          65px 0;
+      .network-ring {
+        width: 275px;
+        height: 275px;
       }
 
-  
-    .section-heading {
-        margin-bottom: 35px;
+      .node {
+        width: 82px;
+        height: 82px;
       }
 
-      .gateway-grid {
+      .node-icon {
+        font-size: 25px;
+      }
+
+      .gateways {
         grid-template-columns: 1fr;
-
-        gap: 16px;
       }
 
       .gateway {
-        min-height: 270px;
-
-        padding: 27px;
+        min-height: 250px;
       }
 
-      .gateway-icon {
-        width: 68px;
-        height: 68px;
-
-        font-size: 35px;
-      }
-
-      .steps {
+      .process {
         grid-template-columns: 1fr;
       }
 
-      .trust-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .cta {
-        padding:
-          10px 0 65px;
-      }
-
-      .cta-box {
-        padding:
-          45px 22px;
+      .section {
+        padding: 65px 0;
       }
 
       .footer-grid {
         grid-template-columns: 1fr;
-
         gap: 30px;
       }
 
-      .copyright {
-        display: block;
-      }
-
-      .copyright span {
-        display: block;
-
-        margin-bottom: 7px;
+      .footer-bottom {
+        flex-direction: column;
       }
     }
 
-
-    /* =========================================================
+    /* =========================
        SMALL PHONES
-       ========================================================= */
+    ========================= */
 
-    @media (max-width: 420px) {
+    @media (max-width: 380px) {
 
-      h1 {
+      .brand-name {
+        font-size: 17px;
+      }
+
+      nav a {
+        font-size: 10px;
+        padding: 7px 6px;
+      }
+
+      .hero h1 {
         font-size: 42px;
       }
 
       .network {
-        transform:
-          scale(0.72);
-
-        margin:
-          -55px -65px;
+        transform: scale(0.78);
+        margin: -25px 0;
       }
 
       .gateway {
-        min-height: 260px;
+        padding: 25px;
       }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header>
+    <div class="header-inner">
+
+      <a href="/" class="brand">
+
+        <div class="brand-logo">H</div>
+
+        <div>
+          <div class="brand-name">HAKAMIDZO</div>
+          <div class="brand-tagline">Connect, let's go.</div>
+        </div>
+
+      </a>
+
+      <nav>
+
+        <a href="/buyer-request" class="nav-main">
+          I NEED SOMETHING
+        </a>
+
+        <a href="#gateways">
+          EXPLORE
+        </a>
+
+        <a href="/supply">
+          I CAN SUPPLY
+        </a>
+
+        <a href="/hakamidzopartner">
+          PARTNER
+        </a>
+
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <main>
+
+    <section class="hero">
+
+      <div class="hero-inner">
+
+        <div>
+
+          <div class="eyebrow">
+            Hakamidzo Global Marketplace
+          </div>
+
+          <h1>
+            Where the world
+            <span>connects.</span>
+          </h1>
+
+          <p class="hero-text">
+            Hakamidzo connects buyers, suppliers, businesses and partners
+            to make sourcing, procurement and trade simple.
+          </p>
+
+          <div class="hero-buttons">
+
+            <a
+              href="/buyer-request"
+              class="button button-primary"
+            >
+              I NEED SOMETHING →
+            </a>
+
+            <a
+              href="#gateways"
+              class="button button-secondary"
+            >
+              EXPLORE HAKAMIDZO
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- NETWORK -->
+
+        <div class="network">
+
+          <div class="network-ring">
+
+            <div class="network-line line-top"></div>
+            <div class="network-line line-bottom"></div>
+            <div class="network-line line-left"></div>
+            <div class="network-line line-right"></div>
+
+            <div class="hub">
+              H
+            </div>
+
+            <div class="node node-top">
+              <div class="node-icon">🛒</div>
+              <strong>BUYERS</strong>
+            </div>
+
+            <div class="node node-bottom">
+              <div class="node-icon">🤝</div>
+              <strong>PARTNERS</strong>
+            </div>
+
+            <div class="node node-left">
+              <div class="node-icon">🏢</div>
+              <strong>BUSINESSES</strong>
+            </div>
+
+            <div class="node node-right">
+              <div class="node-icon">📦</div>
+              <strong>SUPPLIERS</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         GATEWAYS
+    ========================== -->
+
+    <section
+      class="section section-light"
+      id="gateways"
+    >
+
+      <div class="section-inner">
+
+        <div class="section-heading">
+
+          <div class="eyebrow">
+            Enter Hakamidzo
+          </div>
+
+          <h2>
+            Choose your gateway.
+          </h2>
+
+          <p>
+            Whether you need something, can supply something, or want
+            to help make transactions happen, there is a place for you
+            inside the Hakamidzo network.
+          </p>
+
+        </div>
+
+
+        <div class="gateways">
+
+
+          <!-- BUYER -->
+
+          <a
+            href="/buyer-request"
+            class="gateway gateway-green primary-gateway"
+          >
+
+            <div>
+
+              <div class="gateway-icon">
+                🛒
+              </div>
+
+              <div class="gateway-label">
+                BUYER
+              </div>
+
+              <h3>
+                I NEED SOMETHING
+              </h3>
+
+              <p>
+                Tell Hakamidzo what you are looking for and let the
+                network help connect the right supply.
+              </p>
+
+            </div>
+
+            <div class="gateway-action">
+              SUBMIT A R
