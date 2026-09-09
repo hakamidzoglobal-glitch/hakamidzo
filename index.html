@@ -3,10 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hakamidzo Global — a marketplace connecting buyers, suppliers and partners to make sourcing, procurement and trade simple.">
+
+  <meta
+    name="description"
+    content="Hakamidzo Global — a marketplace connecting buyers, suppliers and partners to make sourcing, procurement and trade simple."
+  >
+
   <title>Hakamidzo — Connect, let's go.</title>
 
   <style>
+    /* =========================================================
+       HAKAMIDZO GLOBAL
+       Main storefront
+       ========================================================= */
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -17,21 +27,43 @@
       --green: #123c32;
       --green-dark: #08251f;
       --green-light: #1c5748;
+
       --cream: #f7f1e5;
       --cream-light: #fcfaf4;
+
       --gold: #c9a86a;
       --gold-light: #e1c992;
+
       --text: #17342d;
       --muted: #68756f;
+
       --white: #ffffff;
+
       --border: rgba(18, 60, 50, 0.12);
+
+      --shadow:
+        0 15px 40px rgba(18, 60, 50, 0.10);
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       background: var(--cream-light);
       color: var(--text);
       line-height: 1.5;
+
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
     }
 
     a {
@@ -49,22 +81,33 @@
       margin: 0 auto;
     }
 
-    /* HEADER */
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
 
     header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(252, 250, 244, 0.96);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
+      z-index: 1000;
+
+      background:
+        rgba(252, 250, 244, 0.96);
+
+      border-bottom:
+        1px solid var(--border);
+
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .nav {
       min-height: 76px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 25px;
     }
 
@@ -72,107 +115,162 @@
       display: flex;
       align-items: center;
       gap: 12px;
+
       flex-shrink: 0;
     }
 
     .logo {
       width: 46px;
       height: 46px;
+
       border-radius: 14px;
+
       background: var(--green);
       color: var(--gold-light);
+
       display: grid;
       place-items: center;
+
       font-size: 25px;
       font-weight: 900;
-      box-shadow: 0 8px 20px rgba(18, 60, 50, 0.18);
+
+      box-shadow:
+        0 8px 20px rgba(18, 60, 50, 0.18);
     }
 
     .brand-text strong {
       display: block;
+
       font-size: 17px;
       letter-spacing: 2px;
+
       color: var(--green);
     }
 
     .brand-text span {
       display: block;
+
       font-size: 11px;
       color: var(--muted);
+
       margin-top: 1px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 8px;
+
+      gap: 6px;
     }
 
     .nav-links a {
       padding: 10px 14px;
+
       border-radius: 10px;
+
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
+
       color: var(--text);
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
     }
 
     .nav-links a:hover {
       background: var(--cream);
+      color: var(--green);
+      transform: translateY(-1px);
     }
 
-    .nav-account {
-      background: var(--green) !important;
-      color: white !important;
-    }
 
-    /* HERO */
+    /* =========================================================
+       HERO
+       ========================================================= */
 
     .hero {
+      position: relative;
+
       background:
-        radial-gradient(circle at 15% 15%, rgba(201,168,106,0.16), transparent 28%),
-        radial-gradient(circle at 85% 30%, rgba(28,87,72,0.12), transparent 30%),
+        radial-gradient(
+          circle at 12% 15%,
+          rgba(201, 168, 106, 0.18),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 88% 25%,
+          rgba(28, 87, 72, 0.13),
+          transparent 30%
+        ),
         var(--cream);
-      padding: 90px 0 70px;
+
+      padding: 90px 0 75px;
+
       overflow: hidden;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 0.9fr;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(420px, 0.9fr);
+
       align-items: center;
-      gap: 65px;
+
+      gap: 60px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(18,60,50,0.08);
+
+      background:
+        rgba(18, 60, 50, 0.08);
+
       color: var(--green);
-      border: 1px solid rgba(18,60,50,0.12);
+
+      border:
+        1px solid rgba(18, 60, 50, 0.12);
+
       border-radius: 999px;
+
       padding: 8px 14px;
+
       font-size: 11px;
-      font-weight: 800;
+      font-weight: 900;
+
       letter-spacing: 1.5px;
       text-transform: uppercase;
+
       margin-bottom: 22px;
     }
 
     .eyebrow::before {
       content: "";
+
       width: 7px;
       height: 7px;
+
       border-radius: 50%;
+
       background: var(--gold);
     }
 
     h1 {
-      font-size: clamp(44px, 6vw, 76px);
+      font-size:
+        clamp(44px, 6vw, 76px);
+
       line-height: 0.98;
+
       letter-spacing: -3px;
+
       color: var(--green-dark);
-      margin-bottom: 22px;
+
+      margin-bottom: 23px;
     }
 
     h1 span {
@@ -181,28 +279,44 @@
 
     .hero-copy {
       max-width: 650px;
+
       font-size: 19px;
+
       color: var(--muted);
+
       margin-bottom: 32px;
     }
 
     .hero-buttons {
       display: flex;
+      align-items: center;
+
       gap: 12px;
+
       flex-wrap: wrap;
     }
 
     .btn {
+      min-height: 53px;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 52px;
-      padding: 0 23px;
+
+      padding: 0 24px;
+
       border-radius: 12px;
+
       font-size: 14px;
-      font-weight: 800;
-      border: 1px solid transparent;
-      transition: 0.2s ease;
+      font-weight: 900;
+
+      border:
+        1px solid transparent;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
     }
 
     .btn:hover {
@@ -212,20 +326,37 @@
     .btn-primary {
       background: var(--green);
       color: white;
-      box-shadow: 0 12px 25px rgba(18,60,50,0.18);
+
+      box-shadow:
+        0 12px 28px rgba(18, 60, 50, 0.20);
+    }
+
+    .btn-primary:hover {
+      background: var(--green-light);
+
+      box-shadow:
+        0 16px 32px rgba(18, 60, 50, 0.25);
     }
 
     .btn-secondary {
-      border-color: rgba(18,60,50,0.18);
+      background: rgba(255,255,255,0.55);
+
+      border-color:
+        rgba(18, 60, 50, 0.18);
+
       color: var(--green);
-      background: rgba(255,255,255,0.45);
     }
 
-    /* CONNECTION HUB */
+
+    /* =========================================================
+       CONNECTION NETWORK
+       ========================================================= */
 
     .network {
-      min-height: 440px;
+      min-height: 450px;
+
       position: relative;
+
       display: grid;
       place-items: center;
     }
@@ -233,45 +364,71 @@
     .network-ring {
       width: 350px;
       height: 350px;
-      border: 1px solid rgba(18,60,50,0.13);
+
+      border:
+        1px solid rgba(18, 60, 50, 0.13);
+
       border-radius: 50%;
+
       position: relative;
     }
 
     .network-ring::before {
       content: "";
+
       position: absolute;
+
       inset: 38px;
-      border: 1px dashed rgba(201,168,106,0.6);
+
+      border:
+        1px dashed rgba(201, 168, 106, 0.65);
+
       border-radius: 50%;
     }
 
     .network-center {
       position: absolute;
+
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%);
+
+      transform:
+        translate(-50%, -50%);
+
       width: 115px;
       height: 115px;
+
       border-radius: 32px;
+
       background: var(--green);
       color: var(--gold-light);
+
       display: grid;
       place-items: center;
+
       font-size: 60px;
       font-weight: 900;
-      box-shadow: 0 20px 45px rgba(18,60,50,0.24);
+
+      box-shadow:
+        0 20px 45px rgba(18, 60, 50, 0.24);
+
       z-index: 3;
     }
 
     .connection-line {
       position: absolute;
-      background: rgba(18,60,50,0.18);
+
+      background:
+        rgba(18, 60, 50, 0.18);
+
       transform-origin: left center;
+
       height: 2px;
       width: 125px;
+
       left: 50%;
       top: 50%;
+
       z-index: 1;
     }
 
@@ -293,18 +450,30 @@
 
     .node {
       position: absolute;
+
       width: 112px;
       min-height: 105px;
+
       border-radius: 22px;
+
       background: white;
-      border: 1px solid var(--border);
-      box-shadow: 0 14px 35px rgba(18,60,50,0.10);
+
+      border:
+        1px solid var(--border);
+
+      box-shadow:
+        0 14px 35px rgba(18, 60, 50, 0.10);
+
       display: flex;
       flex-direction: column;
+
       align-items: center;
       justify-content: center;
+
       gap: 5px;
+
       z-index: 4;
+
       text-align: center;
     }
 
@@ -316,6 +485,7 @@
     .node strong {
       font-size: 12px;
       color: var(--green);
+
       letter-spacing: 0.4px;
     }
 
@@ -327,37 +497,51 @@
     .node-top {
       top: -5px;
       left: 50%;
-      transform: translateX(-50%);
+
+      transform:
+        translateX(-50%);
     }
 
     .node-right {
       right: -18px;
       top: 50%;
-      transform: translateY(-50%);
+
+      transform:
+        translateY(-50%);
     }
 
     .node-bottom {
       bottom: -5px;
       left: 50%;
-      transform: translateX(-50%);
+
+      transform:
+        translateX(-50%);
     }
 
     .node-left {
       left: -18px;
       top: 50%;
-      transform: translateY(-50%);
+
+      transform:
+        translateY(-50%);
     }
 
-    /* SECTION */
+
+    /* =========================================================
+       GENERAL SECTIONS
+       ========================================================= */
 
     section {
       padding: 90px 0;
     }
 
     .section-heading {
-      text-align: center;
       max-width: 720px;
-      margin: 0 auto 45px;
+
+      text-align: center;
+
+      margin:
+        0 auto 48px;
     }
 
     .section-heading .eyebrow {
@@ -365,19 +549,28 @@
     }
 
     h2 {
-      font-size: clamp(30px, 4vw, 48px);
+      font-size:
+        clamp(30px, 4vw, 48px);
+
       line-height: 1.05;
+
       letter-spacing: -1.5px;
+
       color: var(--green-dark);
+
       margin-bottom: 14px;
     }
 
     .section-heading p {
       color: var(--muted);
+
       font-size: 16px;
     }
 
-    /* GATEWAYS */
+
+    /* =========================================================
+       GATEWAYS
+       ========================================================= */
 
     .gateways {
       background: var(--cream-light);
@@ -385,90 +578,235 @@
 
     .gateway-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 20px;
     }
 
     .gateway {
-      min-height: 245px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 28px;
+      min-height: 285px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      border-radius: 24px;
+
+      padding: 30px;
+
       display: flex;
       flex-direction: column;
-      position: relative;
-      overflow: hidden;
-      transition: 0.25s ease;
-      box-shadow: 0 8px 25px rgba(18,60,50,0.05);
+
+      border:
+        1px solid rgba(255,255,255,0.25);
+
+      color: white;
+
+      box-shadow:
+        0 12px 30px rgba(18, 60, 50, 0.10);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
     }
 
     .gateway:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 40px rgba(18,60,50,0.12);
-      border-color: rgba(201,168,106,0.55);
+      transform:
+        translateY(-7px);
+
+      box-shadow:
+        0 24px 48px rgba(18, 60, 50, 0.18);
+    }
+
+    .gateway::before {
+      content: "";
+
+      position: absolute;
+
+      width: 190px;
+      height: 190px;
+
+      border-radius: 50%;
+
+      right: -75px;
+      top: -75px;
+
+      background:
+        rgba(255,255,255,0.10);
     }
 
     .gateway::after {
       content: "";
+
       position: absolute;
-      width: 110px;
-      height: 110px;
+
+      width: 120px;
+      height: 120px;
+
       border-radius: 50%;
-      background: rgba(201,168,106,0.08);
-      right: -40px;
-      top: -40px;
+
+      left: -55px;
+      bottom: -60px;
+
+      background:
+        rgba(255,255,255,0.06);
     }
 
     .gateway-icon {
-      width: 62px;
-      height: 62px;
-      border-radius: 17px;
+      width: 72px;
+      height: 72px;
+
+      border-radius: 20px;
+
       display: grid;
       place-items: center;
-      background: var(--cream);
-      font-size: 32px;
-      margin-bottom: 22px;
+
+      background:
+        rgba(255,255,255,0.16);
+
+      border:
+        1px solid rgba(255,255,255,0.18);
+
+      font-size: 38px;
+
+      margin-bottom: 24px;
+
+      position: relative;
+      z-index: 2;
     }
 
     .gateway h3 {
-      font-size: 19px;
-      color: var(--green);
-      margin-bottom: 9px;
+      position: relative;
+      z-index: 2;
+
+      font-size: 20px;
+
+      letter-spacing: 0.2px;
+
+      margin-bottom: 10px;
     }
 
     .gateway p {
+      position: relative;
+      z-index: 2;
+
+      max-width: 310px;
+
       font-size: 13px;
-      color: var(--muted);
-      max-width: 290px;
+
+      line-height: 1.65;
+
+      color:
+        rgba(255,255,255,0.78);
     }
 
     .gateway-arrow {
+      position: relative;
+      z-index: 2;
+
       margin-top: auto;
-      padding-top: 22px;
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--gold);
-      letter-spacing: 0.8px;
+
+      padding-top: 25px;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+      color: rgba(255,255,255,0.92);
     }
 
-    /* HAKAMIDZO WAY */
+
+    /* INDIVIDUAL CARD COLORS */
+
+    .gateway-buyer {
+      background:
+        linear-gradient(
+          145deg,
+          #123c32,
+          #1b5a4a
+        );
+    }
+
+    .gateway-explore {
+      background:
+        linear-gradient(
+          145deg,
+          #17465a,
+          #236f7c
+        );
+    }
+
+    .gateway-supplier {
+      background:
+        linear-gradient(
+          145deg,
+          #9a7130,
+          #c9a86a
+        );
+
+      color: #fff;
+    }
+
+    .gateway-partner {
+      background:
+        linear-gradient(
+          145deg,
+          #633b48,
+          #8a5260
+        );
+    }
+
+    .gateway-account {
+      background:
+        linear-gradient(
+          145deg,
+          #303b3d,
+          #4c5a5d
+        );
+    }
+
+    .gateway-support {
+      background:
+        linear-gradient(
+          145deg,
+          #31536b,
+          #4f7890
+        );
+    }
+
+
+    /* =========================================================
+       HAKAMIDZO WAY
+       ========================================================= */
 
     .way {
       background: var(--green);
+
       color: white;
+
       position: relative;
+
       overflow: hidden;
     }
 
     .way::before {
       content: "H";
+
       position: absolute;
+
       right: -40px;
       bottom: -100px;
+
       font-size: 420px;
       font-weight: 900;
-      color: rgba(255,255,255,0.025);
+
+      color:
+        rgba(255,255,255,0.025);
+
       line-height: 1;
     }
 
@@ -477,125 +815,196 @@
     }
 
     .way .section-heading p {
-      color: rgba(255,255,255,0.68);
+      color:
+        rgba(255,255,255,0.68);
     }
 
     .way .eyebrow {
       color: var(--gold-light);
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.12);
+
+      background:
+        rgba(255,255,255,0.08);
+
+      border-color:
+        rgba(255,255,255,0.12);
     }
 
     .steps {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
       gap: 15px;
+
       position: relative;
+
       z-index: 2;
     }
 
     .step {
       padding: 30px 22px;
-      border: 1px solid rgba(255,255,255,0.12);
+
+      border:
+        1px solid rgba(255,255,255,0.12);
+
       border-radius: 18px;
-      background: rgba(255,255,255,0.055);
+
+      background:
+        rgba(255,255,255,0.055);
+
       text-align: center;
     }
 
     .step-number {
       width: 45px;
       height: 45px;
+
       border-radius: 50%;
-      margin: 0 auto 18px;
+
+      margin:
+        0 auto 18px;
+
       background: var(--gold);
+
       color: var(--green-dark);
+
       display: grid;
       place-items: center;
+
       font-weight: 900;
     }
 
     .step h3 {
       margin-bottom: 8px;
+
       color: white;
+
       font-size: 17px;
     }
 
     .step p {
       font-size: 12px;
-      color: rgba(255,255,255,0.65);
+
+      color:
+        rgba(255,255,255,0.65);
     }
 
-    /* TRUST */
+
+    /* =========================================================
+       TRUST
+       ========================================================= */
 
     .trust-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
       gap: 20px;
     }
 
     .trust-card {
       padding: 32px;
+
       border-radius: 20px;
+
       background: var(--cream);
-      border: 1px solid rgba(18,60,50,0.08);
+
+      border:
+        1px solid rgba(18,60,50,0.08);
     }
 
     .trust-icon {
       font-size: 34px;
+
       margin-bottom: 18px;
     }
 
     .trust-card h3 {
       color: var(--green);
+
       margin-bottom: 9px;
     }
 
     .trust-card p {
       font-size: 13px;
+
       color: var(--muted);
     }
 
-    /* CTA */
+
+    /* =========================================================
+       CTA
+       ========================================================= */
 
     .cta {
-      padding: 25px 0 90px;
+      padding:
+        25px 0 90px;
     }
 
     .cta-box {
       background:
-        radial-gradient(circle at 90% 20%, rgba(201,168,106,0.25), transparent 30%),
+        radial-gradient(
+          circle at 90% 20%,
+          rgba(201,168,106,0.25),
+          transparent 30%
+        ),
         var(--cream);
-      border: 1px solid rgba(18,60,50,0.1);
+
+      border:
+        1px solid rgba(18,60,50,0.10);
+
       border-radius: 28px;
-      padding: 60px 45px;
+
+      padding:
+        60px 45px;
+
       text-align: center;
     }
 
     .cta-box h2 {
       max-width: 700px;
-      margin: 0 auto 15px;
+
+      margin:
+        0 auto 15px;
     }
 
     .cta-box p {
       max-width: 600px;
-      margin: 0 auto 28px;
+
+      margin:
+        0 auto 28px;
+
       color: var(--muted);
     }
 
-    /* FOOTER */
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
 
     footer {
       background: var(--green-dark);
+
       color: white;
-      padding: 55px 0 25px;
+
+      padding:
+        55px 0 25px;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+
+      grid-template-columns:
+        1.5fr 1fr 1fr 1fr;
+
       gap: 40px;
+
       padding-bottom: 45px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+
+      border-bottom:
+        1px solid rgba(255,255,255,0.10);
     }
 
     .footer-brand .brand {
@@ -607,27 +1016,39 @@
     }
 
     .footer-brand .brand-text span {
-      color: rgba(255,255,255,0.55);
+      color:
+        rgba(255,255,255,0.55);
     }
 
     .footer-brand p {
       max-width: 320px;
-      color: rgba(255,255,255,0.55);
+
+      color:
+        rgba(255,255,255,0.55);
+
       font-size: 13px;
     }
 
     .footer-column h4 {
       color: var(--gold-light);
+
       font-size: 12px;
+
       letter-spacing: 1px;
+
       text-transform: uppercase;
+
       margin-bottom: 17px;
     }
 
     .footer-column a {
       display: block;
-      color: rgba(255,255,255,0.62);
+
+      color:
+        rgba(255,255,255,0.62);
+
       font-size: 13px;
+
       margin-bottom: 10px;
     }
 
@@ -637,75 +1058,112 @@
 
     .copyright {
       padding-top: 22px;
-      color: rgba(255,255,255,0.4);
+
+      color:
+        rgba(255,255,255,0.4);
+
       font-size: 11px;
+
       display: flex;
+
       justify-content: space-between;
+
       gap: 20px;
+
       flex-wrap: wrap;
     }
 
-    /* MOBILE */
 
-    @media (max-width: 900px) {
+    /* =========================================================
+       TABLETS
+       ========================================================= */
+
+    @media (max-width: 1000px) {
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+      }
+
+      .hero-copy {
+        max-width: 700px;
+      }
+
+      .network {
+        min-height: 410px;
+      }
+
+      .gateway-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .steps {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .trust-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 700px) {
+
+      .container {
+        width:
+          min(100% - 28px, 1180px);
+      }
+
+      header {
+        position: relative;
+      }
+
+      .nav {
+        min-height: 70px;
+      }
+
       .nav-links {
         display: none;
       }
 
-      .hero {
-        padding: 60px 0;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .network {
-        min-height: 390px;
-      }
-
-      .gateway-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .steps {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .trust-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        width: min(100% - 28px, 1180px);
-      }
-
-      .nav {
-        min-height: 68px;
-      }
-
       .logo {
-        width: 42px;
-        height: 42px;
+        width: 43px;
+        height: 43px;
+
+        border-radius: 13px;
+
+        font-size: 23px;
       }
 
       .brand-text strong {
         font-size: 15px;
       }
 
+      .brand-text span {
+        font-size: 10px;
+      }
+
       .hero {
-        padding: 48px 0 35px;
+        padding:
+          52px 0 35px;
       }
 
       h1 {
-        font-size: 47px;
+        font-size: 48px;
+
         letter-spacing: -2px;
       }
 
@@ -715,6 +1173,8 @@
 
       .hero-buttons {
         flex-direction: column;
+
+        align-items: stretch;
       }
 
       .btn {
@@ -722,32 +1182,65 @@
       }
 
       .network {
-        transform: scale(0.83);
-        margin: -30px -35px;
+        min-height: 350px;
+
+        transform:
+          scale(0.82);
+
+        margin:
+          -30px -40px;
+      }
+
+      section {
+        padding:
+          65px 0;
+      }
+
+  
+    .section-heading {
+        margin-bottom: 35px;
       }
 
       .gateway-grid {
         grid-template-columns: 1fr;
+
+        gap: 16px;
+      }
+
+      .gateway {
+        min-height: 270px;
+
+        padding: 27px;
+      }
+
+      .gateway-icon {
+        width: 68px;
+        height: 68px;
+
+        font-size: 35px;
       }
 
       .steps {
         grid-template-columns: 1fr;
       }
 
-      section {
-        padding: 65px 0;
+      .trust-grid {
+        grid-template-columns: 1fr;
       }
 
       .cta {
-        padding: 10px 0 65px;
+        padding:
+          10px 0 65px;
       }
 
       .cta-box {
-        padding: 45px 22px;
+        padding:
+          45px 22px;
       }
 
       .footer-grid {
         grid-template-columns: 1fr;
+
         gap: 30px;
       }
 
@@ -757,210 +1250,30 @@
 
       .copyright span {
         display: block;
+
         margin-bottom: 7px;
       }
     }
-  </style>
-</head>
-
-<body>
-
-  <!-- HEADER -->
-  <header>
-    <div class="container nav">
-
-      <a href="/" class="brand">
-        <div class="logo">H</div>
-        <div class="brand-text">
-          <strong>HAKAMIDZO</strong>
-          <span>Connect, let's go.</span>
-        </div>
-      </a>
-
-      <nav class="nav-links">
-        <a href="#gateways">I need something</a>
-        <a href="#gateways">Explore</a>
-        <a href="#gateways">I can supply</a>
-        <a href="#gateways">Partner</a>
-        <a href="#footer" class="nav-account">Account</a>
-      </nav>
-
-    </div>
-  </header>
 
 
-  <!-- HERO -->
-  <main>
+    /* =========================================================
+       SMALL PHONES
+       ========================================================= */
 
-    <section class="hero">
-      <div class="container hero-grid">
+    @media (max-width: 420px) {
 
-        <div>
-          <div class="eyebrow">GLOBAL MARKETPLACE</div>
+      h1 {
+        font-size: 42px;
+      }
 
-          <h1>
-            ONE PLATFORM.<br>
-            MANY <span>POSSIBILITIES.</span>
-          </h1>
+      .network {
+        transform:
+          scale(0.72);
 
-          <p class="hero-copy">
-            Hakamidzo brings buyers, businesses, suppliers and partners
-            together to make sourcing, procurement and trade simple.
-          </p>
+        margin:
+          -55px -65px;
+      }
 
-          <div class="hero-buttons">
-            <a class="btn btn-primary" href="#gateways">
-              Explore Hakamidzo
-            </a>
-
-            <a class="btn btn-secondary" href="#gateways">
-              I need something
-            </a>
-          </div>
-        </div>
-
-
-        <!-- CONNECTION VISUAL -->
-        <div class="network">
-
-          <div class="network-ring">
-
-            <div class="connection-line line-top"></div>
-            <div class="connection-line line-right"></div>
-            <div class="connection-line line-bottom"></div>
-            <div class="connection-line line-left"></div>
-
-            <div class="network-center">H</div>
-
-            <div class="node node-top">
-              <div class="icon">🛒</div>
-              <strong>BUYERS</strong>
-              <small>Need something?</small>
-            </div>
-
-            <div class="node node-right">
-              <div class="icon">🏢</div>
-              <strong>BUSINESSES</strong>
-              <small>Grow & trade</small>
-            </div>
-
-            <div class="node node-bottom">
-              <div class="icon">📦</div>
-              <strong>SUPPLIERS</strong>
-              <small>Can supply</small>
-            </div>
-
-            <div class="node node-left">
-              <div class="icon">🤝</div>
-              <strong>PARTNERS</strong>
-              <small>Help connect</small>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- GATEWAYS -->
-    <section class="gateways" id="gateways">
-      <div class="container">
-
-        <div class="section-heading">
-          <div class="eyebrow">START HERE</div>
-          <h2>Where the world connects.</h2>
-          <p>
-            Choose your gateway into Hakamidzo.
-          </p>
-        </div>
-
-        <div class="gateway-grid">
-
-          <a class="gateway" href="/buyer-request">
-            <div class="gateway-icon">🛒</div>
-            <h3>I NEED SOMETHING</h3>
-            <p>
-              Tell us what you are looking for and let the Hakamidzo network help source it.
-            </p>
-            <div class="gateway-arrow">START A REQUEST →</div>
-          </a>
-
-          <a class="gateway" href="/explore">
-            <div class="gateway-icon">🌍</div>
-            <h3>EXPLORE HAKAMIDZO</h3>
-            <p>
-              Discover products, opportunities, connections and the growing Hakamidzo marketplace.
-            </p>
-            <div class="gateway-arrow">EXPLORE →</div>
-          </a>
-
-          <a class="gateway" href="/supply">
-            <div class="gateway-icon">📦</div>
-            <h3>I CAN SUPPLY</h3>
-            <p>
-              Connect your products and supply capabilities with people and businesses looking for them.
-            </p>
-            <div class="gateway-arrow">JOIN SUPPLIER NETWORK →</div>
-          </a>
-
-          <a class="gateway" href="/hakamidzopartner">
-            <div class="gateway-icon">🤝</div>
-            <h3>BECOME A PARTNER</h3>
-            <p>
-              Help move real transactions forward and participate when your involvement contributes to completion.
-            </p>
-            <div class="gateway-arrow">BECOME A PARTNER →</div>
-          </a>
-
-          <a class="gateway" href="/login">
-            <div class="gateway-icon">🔐</div>
-            <h3>ALREADY HAVE AN ACCOUNT?</h3>
-            <p>
-              Sign in and continue managing your Hakamidzo activity.
-            </p>
-            <div class="gateway-arrow">SIGN IN →</div>
-          </a>
-
-          <a class="gateway" href="/support">
-            <div class="gateway-icon">💬</div>
-            <h3>REVIEWS & SUPPORT</h3>
-            <p>
-              Share your experience, find help and stay connected with Hakamidzo.
-            </p>
-            <div class="gateway-arrow">GET SUPPORT →</div>
-          </a>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- HAKAMIDZO WAY -->
-    <section class="way">
-      <div class="container">
-
-        <div class="section-heading">
-          <div class="eyebrow">THE HAKAMIDZO WAY</div>
-          <h2>From need to completion.</h2>
-          <p>
-            A simple path designed to keep transactions moving.
-          </p>
-        </div>
-
-        <div class="steps">
-
-          <div class="step">
-            <div class="step-number">1</div>
-            <h3>NEED</h3>
-            <p>
-              Someone needs a product, item or solution.
-            </p>
-          </div>
-
-          <div class="step">
-            <div class="step-number">2</div>
-            <h3>CONNECT</h3>
-            <p>
+      .gateway {
+        min-height: 260px;
+      }
