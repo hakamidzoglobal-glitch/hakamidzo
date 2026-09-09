@@ -1,46 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Hakamidzo Global — Where the world connects. Discover products, services, businesses and opportunities, or tell Hakamidzo what you need." />
-  <meta name="theme-color" content="#123C32" />
-  <title>Hakamidzo Global — Connect, let's go.</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hakamidzo Global — a marketplace connecting buyers, suppliers and partners to make sourcing, procurement and trade simple.">
+  <title>Hakamidzo — Connect, let's go.</title>
 
   <style>
-    :root {
-      --green: #123C32;
-      --green-dark: #0A2922;
-      --green-light: #1B5547;
-      --cream: #F7F1E5;
-      --cream-light: #FCF9F2;
-      --gold: #C9A86A;
-      --gold-light: #E1C992;
-      --text: #17342D;
-      --muted: #66736E;
-      --white: #FFFFFF;
-      --border: rgba(18, 60, 50, 0.12);
-      --shadow: 0 18px 50px rgba(18, 60, 50, 0.10);
-      --shadow-hover: 0 25px 65px rgba(18, 60, 50, 0.17);
-      --radius: 26px;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --green: #123c32;
+      --green-dark: #08251f;
+      --green-light: #1c5748;
+      --cream: #f7f1e5;
+      --cream-light: #fcfaf4;
+      --gold: #c9a86a;
+      --gold-light: #e1c992;
+      --text: #17342d;
+      --muted: #68756f;
+      --white: #ffffff;
+      --border: rgba(18, 60, 50, 0.12);
     }
 
     body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--cream-light);
       color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
+      line-height: 1.5;
     }
 
     a {
@@ -48,31 +39,33 @@
       text-decoration: none;
     }
 
-    button {
-      font: inherit;
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* HEADER */
 
     header {
       position: sticky;
       top: 0;
-      z-index: 1000;
-      background: rgba(252, 249, 242, 0.94);
-      backdrop-filter: blur(16px);
+      z-index: 100;
+      background: rgba(252, 250, 244, 0.96);
       border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
     }
 
     .nav {
-      width: min(1180px, calc(100% - 40px));
-      margin: auto;
-      min-height: 78px;
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
+      gap: 25px;
     }
 
     .brand {
@@ -82,642 +75,457 @@
       flex-shrink: 0;
     }
 
-    .brand-mark {
-      width: 48px;
-      height: 48px;
-      border-radius: 15px;
+    .logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
       background: var(--green);
-      color: var(--cream);
+      color: var(--gold-light);
       display: grid;
       place-items: center;
       font-size: 25px;
       font-weight: 900;
-      box-shadow: 0 8px 25px rgba(18, 60, 50, 0.20);
+      box-shadow: 0 8px 20px rgba(18, 60, 50, 0.18);
     }
 
-    .brand-name {
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: 0.12em;
+    .brand-text strong {
+      display: block;
+      font-size: 17px;
+      letter-spacing: 2px;
       color: var(--green);
     }
 
-    .brand-tagline {
+    .brand-text span {
+      display: block;
       font-size: 11px;
-      color: var(--gold);
-      font-weight: 800;
-      margin-top: -2px;
+      color: var(--muted);
+      margin-top: 1px;
     }
 
-    .desktop-nav {
+    .nav-links {
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .desktop-nav a {
+    .nav-links a {
       padding: 10px 14px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 750;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
       color: var(--text);
-      transition: 0.25s ease;
     }
 
-    .desktop-nav a:hover {
-      background: rgba(18, 60, 50, 0.07);
-      color: var(--green);
+    .nav-links a:hover {
+      background: var(--cream);
     }
 
-    .account-button {
+    .nav-account {
       background: var(--green) !important;
-      color: var(--white) !important;
-      padding: 11px 17px !important;
-      box-shadow: 0 8px 20px rgba(18, 60, 50, 0.16);
+      color: white !important;
     }
 
-    .account-button:hover {
-      transform: translateY(-1px);
-      background: var(--green-dark) !important;
-    }
-
-    .mobile-menu-button {
-      display: none;
-      border: 0;
-      background: var(--green);
-      color: white;
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      font-size: 22px;
-      cursor: pointer;
-    }
-
-    .mobile-menu {
-      display: none;
-      width: min(1180px, calc(100% - 40px));
-      margin: auto;
-      padding: 0 0 20px;
-    }
-
-    .mobile-menu.open {
-      display: grid;
-      gap: 7px;
-    }
-
-    .mobile-menu a {
-      background: white;
-      padding: 13px 16px;
-      border-radius: 14px;
-      font-weight: 750;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
+    /* HERO */
 
     .hero {
-      position: relative;
-      padding: 90px 20px 70px;
-      overflow: hidden;
       background:
-        radial-gradient(circle at 15% 20%, rgba(201, 168, 106, 0.15), transparent 28%),
-        radial-gradient(circle at 85% 10%, rgba(18, 60, 50, 0.09), transparent 30%),
-        var(--cream-light);
+        radial-gradient(circle at 15% 15%, rgba(201,168,106,0.16), transparent 28%),
+        radial-gradient(circle at 85% 30%, rgba(28,87,72,0.12), transparent 30%),
+        var(--cream);
+      padding: 90px 0 70px;
+      overflow: hidden;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 480px;
-      height: 480px;
-      border: 1px solid rgba(201, 168, 106, 0.18);
-      border-radius: 50%;
-      right: -210px;
-      top: -220px;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 330px;
-      height: 330px;
-      border: 1px solid rgba(18, 60, 50, 0.10);
-      border-radius: 50%;
-      left: -170px;
-      bottom: -190px;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      width: min(1180px, 100%);
-      margin: auto;
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1fr 0.9fr;
       align-items: center;
-      gap: 60px;
-    }
-
-    .hero-copy {
-      max-width: 650px;
+      gap: 65px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      background: rgba(18, 60, 50, 0.07);
+      gap: 8px;
+      background: rgba(18,60,50,0.08);
       color: var(--green);
-      padding: 9px 14px;
+      border: 1px solid rgba(18,60,50,0.12);
       border-radius: 999px;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      margin-bottom: 23px;
+      padding: 8px 14px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
     }
 
-    .eyebrow-dot {
-      width: 8px;
-      height: 8px;
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--gold);
     }
 
-    .hero h1 {
-      font-size: clamp(45px, 7vw, 82px);
+    h1 {
+      font-size: clamp(44px, 6vw, 76px);
       line-height: 0.98;
-      letter-spacing: -0.055em;
-      color: var(--green);
-      margin-bottom: 25px;
-      font-weight: 950;
+      letter-spacing: -3px;
+      color: var(--green-dark);
+      margin-bottom: 22px;
     }
 
-    .hero h1 span {
+    h1 span {
       color: var(--gold);
     }
 
-    .hero-subtitle {
-      font-size: clamp(21px, 3vw, 32px);
-      line-height: 1.15;
-      font-weight: 850;
-      color: var(--text);
-      margin-bottom: 18px;
-    }
-
-    .hero-description {
-      max-width: 600px;
+    .hero-copy {
+      max-width: 650px;
+      font-size: 19px;
       color: var(--muted);
-      font-size: 17px;
-      line-height: 1.75;
-      margin-bottom: 30px;
+      margin-bottom: 32px;
     }
 
-    .hero-actions {
+    .hero-buttons {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .primary-button,
-    .secondary-button {
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
       min-height: 52px;
-      padding: 0 21px;
-      border-radius: 15px;
-      font-weight: 850;
+      padding: 0 23px;
+      border-radius: 12px;
       font-size: 14px;
-      transition: 0.25s ease;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
     }
 
-    .primary-button {
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
       background: var(--green);
-      color: var(--white);
-      box-shadow: 0 12px 28px rgba(18, 60, 50, 0.18);
+      color: white;
+      box-shadow: 0 12px 25px rgba(18,60,50,0.18);
     }
 
-    .primary-button:hover {
-      transform: translateY(-3px);
-      background: var(--green-dark);
-      box-shadow: 0 17px 35px rgba(18, 60, 50, 0.22);
-    }
-
-    .secondary-button {
-      background: white;
-      border: 1px solid var(--border);
+    .btn-secondary {
+      border-color: rgba(18,60,50,0.18);
       color: var(--green);
+      background: rgba(255,255,255,0.45);
     }
 
-    .secondary-button:hover {
-      transform: translateY(-3px);
-      border-color: rgba(201, 168, 106, 0.65);
-      box-shadow: var(--shadow);
-    }
+    /* CONNECTION HUB */
 
-    /* =========================
-       CONNECTION HUB
-    ========================= */
-
-    .connection-stage {
-      min-height: 500px;
+    .network {
+      min-height: 440px;
       position: relative;
       display: grid;
       place-items: center;
     }
 
-    .connection-ring {
+    .network-ring {
+      width: 350px;
+      height: 350px;
+      border: 1px solid rgba(18,60,50,0.13);
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .network-ring::before {
+      content: "";
       position: absolute;
-      width: 410px;
-      height: 410px;
-      border: 1px dashed rgba(18, 60, 50, 0.20);
+      inset: 38px;
+      border: 1px dashed rgba(201,168,106,0.6);
       border-radius: 50%;
     }
 
-    .connection-ring.two {
-      width: 305px;
-      height: 305px;
-      border-style: solid;
-      border-color: rgba(201, 168, 106, 0.22);
-    }
-
-    .hub {
-      position: relative;
-      z-index: 4;
-      width: 145px;
-      height: 145px;
-      border-radius: 42px;
+    .network-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 115px;
+      height: 115px;
+      border-radius: 32px;
       background: var(--green);
-      color: white;
+      color: var(--gold-light);
       display: grid;
       place-items: center;
-      box-shadow:
-        0 28px 70px rgba(18, 60, 50, 0.28),
-        inset 0 0 0 8px rgba(255, 255, 255, 0.04);
-    }
-
-    .hub-letter {
-      font-size: 67px;
-      line-height: 1;
-      font-weight: 950;
-    }
-
-    .hub-label {
-      position: absolute;
-      bottom: 17px;
-      font-size: 10px;
-      letter-spacing: 0.18em;
+      font-size: 60px;
       font-weight: 900;
-      color: var(--gold-light);
+      box-shadow: 0 20px 45px rgba(18,60,50,0.24);
+      z-index: 3;
     }
 
     .connection-line {
       position: absolute;
-      width: 170px;
+      background: rgba(18,60,50,0.18);
+      transform-origin: left center;
       height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(201, 168, 106, 0.75), transparent);
-      transform-origin: center;
+      width: 125px;
+      left: 50%;
+      top: 50%;
       z-index: 1;
     }
 
-    .line-one {
+    .line-top {
+      transform: rotate(-90deg);
+    }
+
+    .line-right {
       transform: rotate(0deg);
     }
 
-    .line-two {
+    .line-bottom {
       transform: rotate(90deg);
     }
 
-    .line-three {
-      transform: rotate(45deg);
-    }
-
-    .line-four {
-      transform: rotate(-45deg);
+    .line-left {
+      transform: rotate(180deg);
     }
 
     .node {
       position: absolute;
-      z-index: 5;
-      width: 105px;
-      height: 105px;
-      border-radius: 29px;
-      background: rgba(255, 255, 255, 0.95);
+      width: 112px;
+      min-height: 105px;
+      border-radius: 22px;
+      background: white;
       border: 1px solid var(--border);
-      box-shadow: 0 18px 45px rgba(18, 60, 50, 0.12);
+      box-shadow: 0 14px 35px rgba(18,60,50,0.10);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 5px;
+      z-index: 4;
       text-align: center;
-      transition: 0.25s ease;
     }
 
-    .node:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-hover);
-      border-color: rgba(201, 168, 106, 0.45);
-    }
-
-    .node-icon {
-      font-size: 35px;
+    .node .icon {
+      font-size: 31px;
       line-height: 1;
     }
 
-    .node-name {
-      font-size: 11px;
-      font-weight: 900;
-      color: var(--green);
-    }
-
-    .node-buyers {
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .node-business {
-      right: 8px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .node-supplier {
-      bottom: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .node-partner {
-      left: 8px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .connection-note {
-      position: absolute;
-      bottom: 5px;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      color: var(--muted);
+    .node strong {
       font-size: 12px;
-      font-weight: 750;
+      color: var(--green);
+      letter-spacing: 0.4px;
     }
 
-    /* =========================
-       SECTION COMMON
-    ========================= */
+    .node small {
+      font-size: 9px;
+      color: var(--muted);
+    }
+
+    .node-top {
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .node-right {
+      right: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .node-bottom {
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .node-left {
+      left: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* SECTION */
 
     section {
-      padding: 95px 20px;
-    }
-
-    .section-inner {
-      width: min(1180px, 100%);
-      margin: auto;
+      padding: 90px 0;
     }
 
     .section-heading {
       text-align: center;
-      max-width: 730px;
-      margin: 0 auto 50px;
+      max-width: 720px;
+      margin: 0 auto 45px;
     }
 
-    .section-kicker {
-      color: var(--gold);
-      font-size: 12px;
-      font-weight: 950;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+    .section-heading .eyebrow {
+      margin-bottom: 14px;
     }
 
-    .section-heading h2 {
-      color: var(--green);
-      font-size: clamp(32px, 5vw, 52px);
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
       line-height: 1.05;
-      letter-spacing: -0.04em;
-      margin-bottom: 15px;
-      font-weight: 950;
+      letter-spacing: -1.5px;
+      color: var(--green-dark);
+      margin-bottom: 14px;
     }
 
     .section-heading p {
       color: var(--muted);
       font-size: 16px;
-      line-height: 1.7;
     }
 
-    /* =========================
-       GATEWAYS
-    ========================= */
+    /* GATEWAYS */
 
-    .gateways-section {
-      background: var(--white);
+    .gateways {
+      background: var(--cream-light);
     }
 
     .gateway-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 18px;
     }
 
-    .gateway-card {
-      position: relative;
-      min-height: 290px;
-      padding: 30px;
-      border-radius: var(--radius);
-      background: var(--cream-light);
+    .gateway {
+      min-height: 245px;
+      background: white;
       border: 1px solid var(--border);
-      overflow: hidden;
+      border-radius: 22px;
+      padding: 28px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      transition: 0.25s ease;
+      box-shadow: 0 8px 25px rgba(18,60,50,0.05);
     }
 
-    .gateway-card::before {
+    .gateway:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(18,60,50,0.12);
+      border-color: rgba(201,168,106,0.55);
+    }
+
+    .gateway::after {
       content: "";
       position: absolute;
-      width: 170px;
-      height: 170px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
-      right: -80px;
-      top: -80px;
-      background: rgba(201, 168, 106, 0.10);
-      transition: 0.3s ease;
-    }
-
-    .gateway-card:hover {
-      transform: translateY(-7px);
-      box-shadow: var(--shadow-hover);
-      border-color: rgba(201, 168, 106, 0.42);
-    }
-
-    .gateway-card:hover::before {
-      transform: scale(1.35);
-    }
-
-    .gateway-top {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 15px;
+      background: rgba(201,168,106,0.08);
+      right: -40px;
+      top: -40px;
     }
 
     .gateway-icon {
-      width: 72px;
-      height: 72px;
-      border-radius: 21px;
-      background: var(--green);
+      width: 62px;
+      height: 62px;
+      border-radius: 17px;
       display: grid;
       place-items: center;
-      font-size: 39px;
-      box-shadow: 0 12px 28px rgba(18, 60, 50, 0.16);
+      background: var(--cream);
+      font-size: 32px;
+      margin-bottom: 22px;
     }
 
-    .gateway-number {
-      color: var(--gold);
-      font-size: 12px;
-      font-weight: 950;
-      letter-spacing: 0.1em;
-    }
-
-    .gateway-content {
-      position: relative;
-      z-index: 2;
-      margin-top: 30px;
-    }
-
-    .gateway-content h3 {
-      font-size: 22px;
-      line-height: 1.1;
+    .gateway h3 {
+      font-size: 19px;
       color: var(--green);
-      margin-bottom: 10px;
-      font-weight: 950;
+      margin-bottom: 9px;
     }
 
-    .gateway-content p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.65;
-    }
-
-    .gateway-link {
-      position: relative;
-      z-index: 2;
-      margin-top: 22px;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      color: var(--green);
+    .gateway p {
       font-size: 13px;
-      font-weight: 900;
+      color: var(--muted);
+      max-width: 290px;
     }
 
-    .gateway-link span {
-      transition: 0.2s ease;
+    .gateway-arrow {
+      margin-top: auto;
+      padding-top: 22px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 0.8px;
     }
 
-    .gateway-card:hover .gateway-link span {
-      transform: translateX(5px);
-    }
+    /* HAKAMIDZO WAY */
 
-    /* =========================
-       HOW IT WORKS
-    ========================= */
-
-    .way-section {
-      background:
-        linear-gradient(rgba(18, 60, 50, 0.97), rgba(18, 60, 50, 0.97)),
-        var(--green);
+    .way {
+      background: var(--green);
       color: white;
       position: relative;
       overflow: hidden;
     }
 
-    .way-section::before {
-      content: "";
+    .way::before {
+      content: "H";
       position: absolute;
-      width: 550px;
-      height: 550px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 50%;
-      right: -260px;
-      top: -250px;
+      right: -40px;
+      bottom: -100px;
+      font-size: 420px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.025);
+      line-height: 1;
     }
 
-    .way-section .section-heading h2 {
+    .way .section-heading h2 {
       color: white;
     }
 
-    .way-section .section-heading p {
-      color: rgba(255, 255, 255, 0.70);
+    .way .section-heading p {
+      color: rgba(255,255,255,0.68);
     }
 
-    .way-grid {
-      position: relative;
+    .way .eyebrow {
+      color: var(--gold-light);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 15px;
-    }
-
-    .way-grid::before {
-      content: "";
-      position: absolute;
-      top: 51px;
-      left: 10%;
-      right: 10%;
-      height: 1px;
-      background: rgba(201, 168, 106, 0.42);
-    }
-
-    .way-card {
       position: relative;
       z-index: 2;
+    }
+
+    .step {
+      padding: 30px 22px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.055);
       text-align: center;
     }
 
-    .way-number {
-      width: 102px;
-      height: 102px;
-      margin: auto;
+    .step-number {
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
-      background: var(--green);
-      border: 1px solid rgba(201, 168, 106, 0.60);
+      margin: 0 auto 18px;
+      background: var(--gold);
+      color: var(--green-dark);
       display: grid;
       place-items: center;
-      font-size: 35px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    }
-
-    .way-card h3 {
-      margin-top: 20px;
-      font-size: 19px;
       font-weight: 900;
-      color: var(--gold-light);
     }
 
-    .way-card p {
-      max-width: 220px;
-      margin: 8px auto 0;
-      color: rgba(255, 255, 255, 0.68);
-      font-size: 13px;
-      line-height: 1.6;
+    .step h3 {
+      margin-bottom: 8px;
+      color: white;
+      font-size: 17px;
     }
 
-    /* =========================
-       TRUST
-    ========================= */
-
-    .trust-section {
-      background: var(--cream);
+    .step p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
     }
+
+    /* TRUST */
 
     .trust-grid {
       display: grid;
@@ -726,260 +534,433 @@
     }
 
     .trust-card {
-      background: white;
-      border-radius: 23px;
-      padding: 28px;
-      border: 1px solid var(--border);
-      box-shadow: 0 12px 35px rgba(18, 60, 50, 0.06);
+      padding: 32px;
+      border-radius: 20px;
+      background: var(--cream);
+      border: 1px solid rgba(18,60,50,0.08);
     }
 
     .trust-icon {
-      font-size: 43px;
-      margin-bottom: 17px;
+      font-size: 34px;
+      margin-bottom: 18px;
     }
 
     .trust-card h3 {
       color: var(--green);
-      font-size: 18px;
-      font-weight: 900;
-      margin-bottom: 8px;
+      margin-bottom: 9px;
     }
 
     .trust-card p {
+      font-size: 13px;
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.65;
     }
 
-    /* =========================
-       CTA
-    ========================= */
+    /* CTA */
 
-    .cta-section {
-      background: var(--white);
-      padding-top: 70px;
-      padding-bottom: 100px;
+    .cta {
+      padding: 25px 0 90px;
     }
 
     .cta-box {
-      position: relative;
-      overflow: hidden;
-      background: var(--green);
-      color: white;
-      border-radius: 32px;
-      padding: 55px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      box-shadow: 0 25px 70px rgba(18, 60, 50, 0.18);
+      background:
+        radial-gradient(circle at 90% 20%, rgba(201,168,106,0.25), transparent 30%),
+        var(--cream);
+      border: 1px solid rgba(18,60,50,0.1);
+      border-radius: 28px;
+      padding: 60px 45px;
+      text-align: center;
     }
 
-    .cta-box::after {
-      content: "H";
-      position: absolute;
-      right: 20px;
-      bottom: -75px;
-      font-size: 260px;
-      line-height: 1;
-      color: rgba(255, 255, 255, 0.035);
-      font-weight: 950;
+    .cta-box h2 {
+      max-width: 700px;
+      margin: 0 auto 15px;
     }
 
-    .cta-copy {
-      position: relative;
-      z-index: 2;
-      max-width: 680px;
+    .cta-box p {
+      max-width: 600px;
+      margin: 0 auto 28px;
+      color: var(--muted);
     }
 
-    .cta-copy h2 {
-      font-size: clamp(30px, 5vw, 48px);
-      line-height: 1.05;
-      margin-bottom: 14px;
-      font-weight: 950;
-    }
-
-    .cta-copy p {
-      color: rgba(255, 255, 255, 0.70);
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
-    .cta-action {
-      position: relative;
-      z-index: 2;
-      flex-shrink: 0;
-    }
-
-    .cta-action a {
-      background: var(--gold);
-      color: var(--green-dark);
-      min-height: 54px;
-      padding: 0 24px;
-      border-radius: 15px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 950;
-      transition: 0.25s ease;
-    }
-
-    .cta-action a:hover {
-      background: var(--gold-light);
-      transform: translateY(-3px);
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
+    /* FOOTER */
 
     footer {
       background: var(--green-dark);
       color: white;
-      padding: 55px 20px 25px;
+      padding: 55px 0 25px;
     }
 
-    .footer-inner {
-      width: min(1180px, 100%);
-      margin: auto;
-    }
-
-    .footer-top {
+    .footer-grid {
       display: grid;
-      grid-template-columns: 1.4fr repeat(3, 1fr);
-      gap: 45px;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
       padding-bottom: 45px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-    }
-
-    .footer-brand {
-      max-width: 330px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
     .footer-brand .brand {
-      margin-bottom: 18px;
+      margin-bottom: 17px;
     }
 
-    .footer-brand .brand-name {
+    .footer-brand .brand-text strong {
       color: white;
     }
 
+    .footer-brand .brand-text span {
+      color: rgba(255,255,255,0.55);
+    }
+
     .footer-brand p {
-      color: rgba(255, 255, 255, 0.58);
+      max-width: 320px;
+      color: rgba(255,255,255,0.55);
       font-size: 13px;
-      line-height: 1.7;
     }
 
     .footer-column h4 {
       color: var(--gold-light);
       font-size: 12px;
-      letter-spacing: 0.12em;
+      letter-spacing: 1px;
       text-transform: uppercase;
-      margin-bottom: 16px;
-      font-weight: 900;
-    }
-
-    .footer-column {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 9px;
+      margin-bottom: 17px;
     }
 
     .footer-column a {
-      color: rgba(255, 255, 255, 0.62);
+      display: block;
+      color: rgba(255,255,255,0.62);
       font-size: 13px;
-      transition: 0.2s ease;
+      margin-bottom: 10px;
     }
 
     .footer-column a:hover {
       color: white;
-      transform: translateX(2px);
     }
 
-    .footer-bottom {
+    .copyright {
       padding-top: 22px;
+      color: rgba(255,255,255,0.4);
+      font-size: 11px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
       gap: 20px;
-      color: rgba(255, 255, 255, 0.42);
-      font-size: 11px;
+      flex-wrap: wrap;
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
+    /* MOBILE */
 
-    @media (max-width: 950px) {
-      .desktop-nav {
+    @media (max-width: 900px) {
+      .nav-links {
         display: none;
       }
 
-      .mobile-menu-button {
-        display: block;
+      .hero {
+        padding: 60px 0;
       }
 
-      .hero-inner {
+      .hero-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
       }
 
-      .hero-copy {
-        text-align: center;
-        margin: auto;
-      }
-
-      .hero-description {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-actions {
-        justify-content: center;
+      .network {
+        min-height: 390px;
       }
 
       .gateway-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .way-grid {
+      .steps {
         grid-template-columns: repeat(2, 1fr);
-        gap: 45px 15px;
-      }
-
-      .way-grid::before {
-        display: none;
       }
 
       .trust-grid {
         grid-template-columns: 1fr;
       }
 
-      .footer-top {
-        grid-template-columns: 1fr 1fr;
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 650px) {
-      .nav {
+    @media (max-width: 600px) {
+      .container {
         width: min(100% - 28px, 1180px);
-        min-height: 70px;
       }
 
-      .brand-mark {
-        width: 43px;
-        height: 43px;
-        border-radius: 13px;
+      .nav {
+        min-height: 68px;
       }
 
-      .brand-name {
-        font-size: 17px;
+      .logo {
+        width: 42px;
+        height: 42px;
+      }
+
+      .brand-text strong {
+        font-size: 15px;
       }
 
       .hero {
-        padding: 65px 16px 55px;
+        padding: 48px 0 35px;
       }
 
-      .hero h1 {
-        font-size: clamp(43px, 15vw, 68px
+      h1 {
+        font-size: 47px;
+        letter-spacing: -2px;
+      }
+
+      .hero-copy {
+        font-size: 16px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .network {
+        transform: scale(0.83);
+        margin: -30px -35px;
+      }
+
+      .gateway-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .cta {
+        padding: 10px 0 65px;
+      }
+
+      .cta-box {
+        padding: 45px 22px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .copyright {
+        display: block;
+      }
+
+      .copyright span {
+        display: block;
+        margin-bottom: 7px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+
+      <a href="/" class="brand">
+        <div class="logo">H</div>
+        <div class="brand-text">
+          <strong>HAKAMIDZO</strong>
+          <span>Connect, let's go.</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#gateways">I need something</a>
+        <a href="#gateways">Explore</a>
+        <a href="#gateways">I can supply</a>
+        <a href="#gateways">Partner</a>
+        <a href="#footer" class="nav-account">Account</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <main>
+
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div>
+          <div class="eyebrow">GLOBAL MARKETPLACE</div>
+
+          <h1>
+            ONE PLATFORM.<br>
+            MANY <span>POSSIBILITIES.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Hakamidzo brings buyers, businesses, suppliers and partners
+            together to make sourcing, procurement and trade simple.
+          </p>
+
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="#gateways">
+              Explore Hakamidzo
+            </a>
+
+            <a class="btn btn-secondary" href="#gateways">
+              I need something
+            </a>
+          </div>
+        </div>
+
+
+        <!-- CONNECTION VISUAL -->
+        <div class="network">
+
+          <div class="network-ring">
+
+            <div class="connection-line line-top"></div>
+            <div class="connection-line line-right"></div>
+            <div class="connection-line line-bottom"></div>
+            <div class="connection-line line-left"></div>
+
+            <div class="network-center">H</div>
+
+            <div class="node node-top">
+              <div class="icon">🛒</div>
+              <strong>BUYERS</strong>
+              <small>Need something?</small>
+            </div>
+
+            <div class="node node-right">
+              <div class="icon">🏢</div>
+              <strong>BUSINESSES</strong>
+              <small>Grow & trade</small>
+            </div>
+
+            <div class="node node-bottom">
+              <div class="icon">📦</div>
+              <strong>SUPPLIERS</strong>
+              <small>Can supply</small>
+            </div>
+
+            <div class="node node-left">
+              <div class="icon">🤝</div>
+              <strong>PARTNERS</strong>
+              <small>Help connect</small>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- GATEWAYS -->
+    <section class="gateways" id="gateways">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">START HERE</div>
+          <h2>Where the world connects.</h2>
+          <p>
+            Choose your gateway into Hakamidzo.
+          </p>
+        </div>
+
+        <div class="gateway-grid">
+
+          <a class="gateway" href="/buyer-request">
+            <div class="gateway-icon">🛒</div>
+            <h3>I NEED SOMETHING</h3>
+            <p>
+              Tell us what you are looking for and let the Hakamidzo network help source it.
+            </p>
+            <div class="gateway-arrow">START A REQUEST →</div>
+          </a>
+
+          <a class="gateway" href="/explore">
+            <div class="gateway-icon">🌍</div>
+            <h3>EXPLORE HAKAMIDZO</h3>
+            <p>
+              Discover products, opportunities, connections and the growing Hakamidzo marketplace.
+            </p>
+            <div class="gateway-arrow">EXPLORE →</div>
+          </a>
+
+          <a class="gateway" href="/supply">
+            <div class="gateway-icon">📦</div>
+            <h3>I CAN SUPPLY</h3>
+            <p>
+              Connect your products and supply capabilities with people and businesses looking for them.
+            </p>
+            <div class="gateway-arrow">JOIN SUPPLIER NETWORK →</div>
+          </a>
+
+          <a class="gateway" href="/hakamidzopartner">
+            <div class="gateway-icon">🤝</div>
+            <h3>BECOME A PARTNER</h3>
+            <p>
+              Help move real transactions forward and participate when your involvement contributes to completion.
+            </p>
+            <div class="gateway-arrow">BECOME A PARTNER →</div>
+          </a>
+
+          <a class="gateway" href="/login">
+            <div class="gateway-icon">🔐</div>
+            <h3>ALREADY HAVE AN ACCOUNT?</h3>
+            <p>
+              Sign in and continue managing your Hakamidzo activity.
+            </p>
+            <div class="gateway-arrow">SIGN IN →</div>
+          </a>
+
+          <a class="gateway" href="/support">
+            <div class="gateway-icon">💬</div>
+            <h3>REVIEWS & SUPPORT</h3>
+            <p>
+              Share your experience, find help and stay connected with Hakamidzo.
+            </p>
+            <div class="gateway-arrow">GET SUPPORT →</div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- HAKAMIDZO WAY -->
+    <section class="way">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">THE HAKAMIDZO WAY</div>
+          <h2>From need to completion.</h2>
+          <p>
+            A simple path designed to keep transactions moving.
+          </p>
+        </div>
+
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>NEED</h3>
+            <p>
+              Someone needs a product, item or solution.
+            </p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>CONNECT</h3>
+            <p>
