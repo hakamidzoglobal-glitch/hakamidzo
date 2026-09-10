@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hakamidzo — I Need Something</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #F7F1E5;
+      color: #171A18;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 32px 18px 60px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .header {
+      margin-bottom: 28px;
+    }
+
+    .logo {
+      color: #123C32;
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .tagline {
+      color: #596660;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    .progress {
+      display: flex;
+      gap: 6px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .progress-bar {
+      height: 4px;
+      flex: 1;
+      border-radius: 20px;
+      transition: background 0.2s ease;
+    }
+
+    .progress-active {
+      background: #123C32;
+    }
+
+    .progress-done {
+      background: #C9A86A;
+    }
+
+    .progress-inactive {
+      background: #DCE7DE;
+    }
+
+    .step-text {
+      color: #C9A86A;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #DCE7DE;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 12px 35px rgba(18,60,50,0.07);
+    }
+
+    .icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #F7F1E5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      margin-bottom: 15px;
+    }
+
+    .title {
+      color: #123C32;
+      font-size: 31px;
+      line-height: 1.15;
+      margin: 0 0 12px;
+      font-weight: 900;
+    }
+
+    .intro {
+      color: #596660;
+      font-size: 14px;
+      line-height: 1.65;
+      margin: 0;
+      max-width: 650px;
+    }
+
+    .divider {
+      height: 1px;
+      background: #DCE7DE;
+      margin: 25px 0 8px;
+    }
+
+    .label {
+      display: block;
+      color: #171A18;
+      font-size: 13px;
+      font-weight: 800;
+      margin-top: 19px;
+      margin-bottom: 8px;
+    }
+
+    .small-label {
+      display: block;
+      color: #171A18;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 7px;
+    }
+
+    .input,
+    .select,
+    .textarea {
+      width: 100%;
+      border: 1px solid #DCE7DE;
+      border-radius: 11px;
+      background: #FFFFFF;
+      color: #171A18;
+      font-size: 14px;
+      outline: none;
+      transition: border 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .input,
+    .select {
+      height: 50px;
+      padding: 0 14px;
+    }
+
+    .textarea {
+      min-height: 105px;
+      padding: 14px;
+      line-height: 1.5;
+      resize: vertical;
+    }
+
+    .input:focus,
+    .select:focus,
+    .textarea:focus {
+      border-color: #123C32;
+      box-shadow: 0 0 0 3px rgba(18,60,50,0.08);
+    }
+
+    .quantity-row,
+    .amount-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .quantity-input,
+    .amount-box {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .unit-input {
+      width: 180px;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 17px 18px;
+      background: #F7F1E5;
+      border-radius: 13px;
+      border-left: 4px solid #C9A86A;
+    }
+
+    .section-title-box {
+      color: #123C32;
+      font-size: 17px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .section-text {
+      color: #596660;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .form-section-title {
+      color: #123C32;
+      font-size: 19px;
+      line-height: 1.3;
+      margin: 28px 0 5px;
+      font-weight: 900;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .back-button {
+      flex: 1;
+      height: 55px;
+      border: 1px solid #123C32;
+      border-radius: 13px;
+      background: #FFFFFF;
+      color: #123C32;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .continue-button,
+    .submit-button {
+      flex: 2;
+      height: 55px;
+      border: none;
+      border-radius: 13px;
+      background: #123C32;
+      color: #FFFFFF;
+      font-size: 15px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .continue-button:hover,
+    .submit-button:hover {
+      background: #0D3029;
+    }
+
+    .back-button:hover {
+      background: #F7F1E5;
+    }
+
+    .arrow {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .secure-text {
+      text-align: center;
+      color: #596660;
+      font-size: 11px;
+      margin-top: 14px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .success-card {
+      text-align: center;
+      padding: 42px 30px;
+    }
+
+    .success-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: #E7F0EA;
+      color: #123C32;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    .success-title {
+      color: #123C32;
+      font-size: 30px;
+      line-height: 1.2;
+      font-weight: 900;
+      margin: 0 0 12px;
+    }
+
+    .success-text {
+      color: #596660;
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 570px;
+      margin: 0 auto;
+    }
+
+    .request-number {
+      margin: 22px auto;
+      padding: 16px;
+      border-radius: 13px;
+      background: #F7F1E5;
+      border: 1px solid #DCE7DE;
+      max-width: 400px;
+    }
+
+    .request-number-label {
+      color: #596660;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .request-number-value {
+      color: #123C32;
+      font-size: 21px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .success-buttons {
+      display: flex;
+      gap: 12px;
+      max-width: 540px;
+      margin: 28px auto 0;
+    }
+
+    .dashboard-button,
+    .another-button {
+      flex: 1;
+      min-height: 52px;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 12px 18px;
+    }
+
+    .dashboard-button {
+      border: none;
+      background: #123C32;
+      color: #FFFFFF;
+    }
+
+    .another-button {
+      border: 1px solid #123C32;
+      background: #FFFFFF;
+      color: #123C32;
+    }
+
+    .error-message {
+      display: none;
+      margin-top: 18px;
+      padding: 13px 15px;
+      border-radius: 11px;
+      background: #FFF1F0;
+      border: 1px solid #E8C7C4;
+      color: #8A332C;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 22px 12px 40px;
+      }
+
+      .card {
+        padding: 22px 18px;
+        border-radius: 20px;
+      }
+
+      .title,
+      .success-title {
+        font-size: 27px;
+      }
+
+      .quantity-row,
+      .amount-row,
+      .buttons,
+      .success-buttons {
+        flex-direction: column;
+      }
+
+      .unit-input {
+        width: 100%;
+      }
+
+      .back-button,
+      .continue-button,
+      .submit-button {
+        flex: none;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+    <div class="wrapper">
+
+      <div class="header">
+        <div class="logo">HAKAMIDZO</div>
+        <div class="tagline">Connect, let’s go.</div>
+      </div>
+
+      <!-- STEP 1 -->
+      <section id="step1" class="screen active">
+
+        <div class="progress">
+          <div class="progress-bar progress-active"></div>
+          <div class="progress-bar progress-inactive"></div>
+        </div>
+
+        <div class="step-text">STEP 1 OF 2</div>
+
+        <div class="card">
+
+          <div class="icon-circle">🛒</div>
+
+          <h1 class="title">I Need Something</h1>
+
+          <p class="intro">
+            Tell us what you are looking for. Hakamidzo will help connect
+            your request with suitable suppliers and service providers.
+          </p>
+
+          <div class="divider"></div>
+
+          <label class="label">Request Type</label>
+
+          <select id="requestType" class="select">
+            <option value="">Select request type</option>
+            <option value="Product">Product</option>
+            <option value="Service">Service</option>
+            <option value="Product + Service">Product + Service</option>
+          </select>
+
+          <label class="label">Category</label>
+
+          <select id="category" class="select">
+            <option value="">Select category</option>
+            <option>Everyday Essentials</option>
+            <option>Food and Agricultural Products</option>
+            <option>Electronics and Accessories</option>
+            <option>Music and Equipment</option>
+            <option>Automotive and Car Parts</option>
+            <option>Furniture and Office Equipment</option>
+            <option>Building Materials and Hardware</option>
+            <option>Clothing and Fashion</option>
+            <option>Home, Garden and Lifestyle</option>
+            <option>Art, Crafts and Creative</option>
+            <option>Beauty and Personal Care</option>
+            <option>Industrial and Commercial Equipment</option>
+            <option>Hospitality and Accommodation</option>
+            <option>Travel, Transport and Logistics</option>
+            <option>Professional and Business Services</option>
+            <option>Home and Personal Services</option>
+            <option>Events and Entertainment</option>
+            <option>Health and Wellness</option>
+            <option>Education and Training</option>
+            <option>Other Products</option>
+          </select>
+
+          <label class="label">Product / Service Name</label>
+
+          <input
+            id="product"
+            class="input"
+            type="text"
+            placeholder="Example: Toyota Hilux Brake Pad"
+          />
+
+          <label class="label">Quantity</label>
+
+          <div class="quantity-row">
+            <input
+              id="quantity"
+              class="input quantity-input"
+              type="text"
+              placeholder="Example: 500"
+            />
+
+            <select id="unit" class="select unit-input">
+              <option value="">Unit</option>
+              <option>Pieces</option>
+              <option>Boxes</option>
+              <option>Cartons</option>
+              <option>Kilograms</option>
+              <option>Tonnes</option>
+              <option>Litres</option>
+              <option>Bottles</option>
+              <option>Bags</option>
+              <option>Sets</option>
+              <option>Pallets</option>
+              <option>Containers</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <label class="label">Quality / Specification</label>
+
+          <textarea
+            id="quality"
+            class="textarea"
+            placeholder="Describe the quality, size, brand, model, grade or specifications you need."
+          ></textarea>
+
+          <div class="section">
+            <div class="section-title-box">
+              Budget / Price Target
+            </div>
+
+            <div class="section-text">
+              If you have a target price, tell us. You can also simply
+              request a quotation.
+            </div>
+          </div>
+
+          <label class="label">Price Preference</label>
+
+          <select id="budgetType" class="select">
+            <option value="">Select price preference</option>
+            <option>Maximum budget</option>
+            <option>Target price</option>
+            <option>Price range</option>
+            <option>Negotiable</option>
+            <option>Request quotation</option>
+          </select>
+
+          <div class="amount-row">
+
+            <div class="amount-box">
+              <label class="small-label">Amount</label>
+
+              <input
+                id="amount"
+                class="input"
+                type="text"
+                placeholder="Example: 500"
+              />
+            </div>
+
+            <div class="amount-box">
+              <label class="small-label">Currency</label>
+
+              <select id="currency" class="select">
+                <option>USD</option>
+                <option>ZAR</option>
+                <option>ZWL</option>
+                <option>GBP</option>
+                <option>EUR</option>
+                <option>GHS</option>
+                <option>ZMW</option>
+                <option>BWP</option>
+                <option>KES</option>
+                <option>NGN</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+          </div>
+
+          <label class="label">Price Basis</label>
+
+          <select id="basis" class="select">
+            <option value="">Select price basis</option>
+            <option>Per unit</option>
+            <option>Total budget</option>
+          </select>
+
+          <label class="label">Additional Requirements</label>
+
+          <textarea
+            id="additional"
+            class="textarea"
+            placeholder="Anything else we should know about your request?"
+          ></textarea>
+
+          <div class="buttons">
+
+            <button
+              type="button"
+              class="continue-button"
+              id="continueButton"
+            >
+              Continue
+              <span class="arrow">→</span>
+            </button>
+
+          </div>
+
+          <div class="secure-text">
+            Your request will be handled through Hakamidzo.
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- STEP 2 -->
+      <section id="step2" class="screen">
+
+        <div class="progress">
+          <div class="progress-bar progress-done"></div>
+          <div class="progress-bar progress-active"></div>
+        </div>
+
+        <div class="step-text">STEP 2 OF 2</div>
+
+        <div class="card">
+
+          <div class="icon-circle">📍</div>
+
+          <h1 class="title">Delivery & Contact</h1>
+
+          <p class="intro">
+            Tell us where you need it, how you want it fulfilled,
+            and how we can contact you.
+          </p>
+
+          <div class="divider"></div>
+
+          <h2 class="form-section-title">
+            Delivery Location
+          </h2>
+
+          <label class="label">Country</label>
+
+          <input
+            id="country"
+            class="input"
+            type="text"
+            placeholder="Example: Zimbabwe"
+          />
+
+          <label class="label">City / Town / District</label>
+
+          <input
+            id="city"
+            class="input"
+            type="text"
+            placeholder="Example: Harare"
+          />
+
+          <label class="label">Delivery Location</label>
+
+          <textarea
+            id="deliveryLocation"
+            class="textarea"
+            placeholder="Area, suburb, street or exact delivery point"
+          ></textarea>
+
+
+          <h2 class="form-section-title">
+            Fulfillment
+          </h2>
+
+          <label class="label">Delivery Requirement</label>
+
+          <select id="deliveryRequirement" class="select">
+            <option value="">Select delivery requirement</option>
+            <option>I need delivery</option>
+            <option>I can collect</option>
+            <option>Either is acceptable</option>
+          </select>
+
+          <label class="label">Required Delivery Date</label>
+
+          <select id="datePreference" class="select">
+            <option value="">Select delivery date preference</option>
+            <option>ASAP</option>
+            <option>Specific date</option>
+            <option>Flexible</option>
+          </select>
+
+          <label class="label">Specific Required Date</label>
+
+          <input
+            id="requiredDate"
+            type="date"
+            class="input"
+          />
+
+          <label class="label">Preferred Fulfillment</label>
+
+          <select id="preferredFulfillment" class="select">
+            <option value="">Select preferred fulfillment</option>
+            <option>No preference</option>
+            <option>Supplier can deliver</option>
+            <option>Supplier + logistics partner</option>
+            <option>I will collect</option>
+          </select>
+
+          <label class="label">Alternative Options</label>
+
+          <select id="alternativeOptions" class="select">
+            <option value="">Select alternative option</option>
+            <option>Yes</option>
+            <option>No</option>
+            <option>Only with approval</option>
+          </select>
+
+
+          <h2 class="form-section-title">
+            Buyer Contact
+          </h2>
+
+          <label class="label">Full Name</label>
+
+          <input
+            id="name"
+            class="input"
+            type="text"
+            placeholder="Your full name"
+          />
+
+          <label class="label">Email</label>
+
+          <input
+            id="email"
+            class="input"
+            type="email"
+            placeholder="you@example.com"
+          />
+
+          <label class="label">Phone / WhatsApp</label>
+
+          <input
+            id="phone"
+            class="input"
+            type="tel"
+            placeholder="Your phone or WhatsApp number"
+          />
+
+
+          <div id="errorMessage" class="error-message"></div>
+
+          <div class="buttons">
+
+            <button
+              type="button"
+              class="back-button"
+              id="backButton"
+            >
+              ← Back
+            </button>
+
+            <button
+              type="button"
+              class="submit-button"
+              id="submitButton"
+            >
+              Submit Request
+            </button>
+
+          </div>
+
+          <div class="secure-text">
+            Your information is handled through Hakamidzo.
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- SUCCESS -->
+      <section id="successScreen" class="screen">
+
+        <div class="card success-card">
+
+          <div class="success-icon">
+            ✓
+          </div>
+
+          <h1 class="success-title">
+            Request Submitted
+          </h1>
+
+          <p class="success-text">
+            Your request has been received by Hakamidzo. We can now work
+            toward connecting your request with suitable supply,
+            fulfillment and transaction support.
+          </p>
+
+          <div class="request-number">
+
+            <div class="request-number-label">
+              Your Hakamidzo Request ID
+            </div>
+
+            <div
+              id="requestNumber"
+              class="request-number-value"
+            >
+              HK-2026-000001
+            </div>
+
+          </div>
+
+          <p class="success-text">
+            Keep this Request ID for your records. As the request progresses,
+            it can be connected to supplier quotations, logistics,
+            partners, order fulfillment and completion.
+          </p>
+
+          <div class="success-buttons">
+
+            <button
+              type="button"
+              class="dashboard-button"
+              id="dashboardButton"
+            >
+              Go to Buyer Dashboard
+            </button>
+
+            <button
+              type="button"
+              class
