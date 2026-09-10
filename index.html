@@ -1,1099 +1,348 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hakamidzo Global — a marketplace connecting buyers, suppliers and partners to make sourcing, procurement and trade simple.">
-  <title>Hakamidzo — Connect, let's go.</title>  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --green: #123c32;
-      --green-dark: #08251f;
-      --green-light: #1c5748;
-      --cream: #f7f1e5;
-      --cream-light: #fcfaf4;
-      --gold: #c9a86a;
-      --gold-light: #e1c992;
-      --text: #17342d;
-      --muted: #68756f;
-      --white: #ffffff;
-      --border: rgba(18, 60, 50, 0.12);
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--cream-light);
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .container {
-      width: min(1180px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    /* HEADER */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(252, 250, 244, 0.96);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-    }
-
-    .nav {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
-    }
-
-    .logo {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      background: var(--green);
-      color: var(--gold-light);
-      display: grid;
-      place-items: center;
-      font-size: 25px;
-      font-weight: 900;
-      box-shadow: 0 8px 20px rgba(18, 60, 50, 0.18);
-    }
-
-    .brand-text strong {
-      display: block;
-      font-size: 17px;
-      letter-spacing: 2px;
-      color: var(--green);
-    }
-
-    .brand-text span {
-      display: block;
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 1px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-links a {
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .nav-links a:hover {
-      background: var(--cream);
-    }
-
-    /* HERO */
-
-    .hero {
-      background:
-        radial-gradient(circle at 15% 15%, rgba(201,168,106,0.16), transparent 28%),
-        radial-gradient(circle at 85% 30%, rgba(28,87,72,0.12), transparent 30%),
-        var(--cream);
-      padding: 90px 0 70px;
-      overflow: hidden;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      align-items: center;
-      gap: 65px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(18,60,50,0.08);
-      color: var(--green);
-      border: 1px solid rgba(18,60,50,0.12);
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 22px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--gold);
-    }
-
-    h1 {
-      font-size: clamp(44px, 6vw, 76px);
-      line-height: 0.98;
-      letter-spacing: -3px;
-      color: var(--green-dark);
-      margin-bottom: 22px;
-    }
-
-    h1 span {
-      color: var(--gold);
-    }
-
-    .hero-copy {
-      max-width: 650px;
-      font-size: 19px;
-      color: var(--muted);
-      margin-bottom: 32px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 23px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 800;
-      border: 1px solid transparent;
-      transition: 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: var(--green);
-      color: white;
-      box-shadow: 0 12px 25px rgba(18,60,50,0.18);
-    }
-
-    .btn-secondary {
-      border-color: rgba(18,60,50,0.18);
-      color: var(--green);
-      background: rgba(255,255,255,0.45);
-    }
-
-    /* CONNECTION HUB */
-
-    .network {
-      min-height: 440px;
-      position: relative;
-      display: grid;
-      place-items: center;
-    }
-
-    .network-ring {
-      width: 350px;
-      height: 350px;
-      border: 1px solid rgba(18,60,50,0.13);
-      border-radius: 50%;
-      position: relative;
-    }
-
-    .network-ring::before {
-      content: "";
-      position: absolute;
-      inset: 38px;
-      border: 1px dashed rgba(201,168,106,0.6);
-      border-radius: 50%;
-    }
-
-    .network-center {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 115px;
-      height: 115px;
-      border-radius: 32px;
-      background: var(--green);
-      color: var(--gold-light);
-      display: grid;
-      place-items: center;
-      font-size: 60px;
-      font-weight: 900;
-      box-shadow: 0 20px 45px rgba(18,60,50,0.24);
-      z-index: 3;
-    }
-
-    .connection-line {
-      position: absolute;
-      background: rgba(18,60,50,0.18);
-      transform-origin: left center;
-      height: 2px;
-      width: 125px;
-      left: 50%;
-      top: 50%;
-      z-index: 1;
-    }
-
-    .line-top {
-      transform: rotate(-90deg);
-    }
-
-    .line-right {
-      transform: rotate(0deg);
-    }
-
-    .line-bottom {
-      transform: rotate(90deg);
-    }
-
-    .line-left {
-      transform: rotate(180deg);
-    }
-
-    .node {
-      position: absolute;
-      width: 112px;
-      min-height: 105px;
-      border-radius: 22px;
-      background: white;
-      border: 1px solid var(--border);
-      box-shadow: 0 14px 35px rgba(18,60,50,0.10);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      z-index: 4;
-      text-align: center;
-    }
-
-    .node .icon {
-      font-size: 31px;
-      line-height: 1;
-    }
-
-    .node strong {
-      font-size: 12px;
-      color: var(--green);
-      letter-spacing: 0.4px;
-    }
-
-    .node small {
-      font-size: 9px;
-      color: var(--muted);
-    }
-
-    .node-top {
-      top: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .node-right {
-      right: -18px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .node-bottom {
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .node-left {
-      left: -18px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    /* SECTION */
-
-    section {
-      padding: 90px 0;
-    }
-
-    .section-heading {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto 45px;
-    }
-
-    .section-heading .eyebrow {
-      margin-bottom: 14px;
-    }
-
-    h2 {
-      font-size: clamp(30px, 4vw, 48px);
-      line-height: 1.05;
-      letter-spacing: -1.5px;
-      color: var(--green-dark);
-      margin-bottom: 14px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    /* GATEWAYS */
-
-    .gateways {
-      background: var(--cream-light);
-    }
-
-    .gateway-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .gateway {
-      min-height: 245px;
-      border-radius: 22px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
-      transition: 0.25s ease;
-      box-shadow: 0 8px 25px rgba(18,60,50,0.08);
-    }
-
-    .gateway:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 40px rgba(18,60,50,0.15);
-    }
-
-    .gateway::after {
-      content: "";
-      position: absolute;
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      right: -40px;
-      top: -40px;
-    }
-
-    .gateway-icon {
-      width: 62px;
-      height: 62px;
-      border-radius: 17px;
-      display: grid;
-      place-items: center;
-      font-size: 32px;
-      margin-bottom: 22px;
-    }
-
-    .gateway h3 {
-      font-size: 19px;
-      margin-bottom: 9px;
-    }
-
-    .gateway p {
-      font-size: 13px;
-      max-width: 290px;
-    }
-
-    .gateway-arrow {
-      margin-top: auto;
-      padding-top: 22px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.8px;
-    }
-
-    /* CARD 1 */
-
-    .gateway:nth-child(1) {
-      background: #e4eadf;
-      border: 1px solid #b5c3aa;
-    }
-
-    .gateway:nth-child(1)::after {
-      background: rgba(83,107,79,0.10);
-    }
-
-    .gateway:nth-child(1) .gateway-icon {
-      background: #c7d2bf;
-    }
-
-    .gateway:nth-child(1) h3 {
-      color: #40583d;
-    }
-
-    .gateway:nth-child(1) p {
-      color: #5e6c59;
-    }
-
-    .gateway:nth-child(1) .gateway-arrow {
-      color: #536b4f;
-    }
-
-    /* CARD 2 */
-
-    .gateway:nth-child(2) {
-      background: #ebe2eb;
-      border: 1px solid #c9b4c9;
-    }
-
-    .gateway:nth-child(2)::after {
-      background: rgba(104,80,109,0.10);
-    }
-
-    .gateway:nth-child(2) .gateway-icon {
-      background: #d8c7d8;
-    }
-
-    .gateway:nth-child(2) h3 {
-      color: #604861;
-    }
-
-    .gateway:nth-child(2) p {
-      color: #70636f;
-    }
-
-    .gateway:nth-child(2) .gateway-arrow {
-      color: #68506d;
-    }
-
-    /* CARD 3 */
-
-    .gateway:nth-child(3) {
-      background: #f2ead3;
-      border: 1px solid #d8c58e;
-    }
-
-    .gateway:nth-child(3)::after {
-      background: rgba(194,162,74,0.11);
-    }
-
-    .gateway:nth-child(3) .gateway-icon {
-      background: #e3d39f;
-    }
-
-    .gateway:nth-child(3) h3 {
-      color: #766124;
-    }
-
-    .gateway:nth-child(3) p {
-      color: #766d55;
-    }
-
-    .gateway:nth-child(3) .gateway-arrow {
-      color: #9a7c2f;
-    }
-
-    /* CARD 4 */
-
-    .gateway:nth-child(4) {
-      background: #f0e2dc;
-      border: 1px solid #d5b3a5;
-    }
-
-    .gateway:nth-child(4)::after {
-      background: rgba(169,104,80,0.10);
-    }
-
-    .gateway:nth-child(4) .gateway-icon {
-      background: #dfc3b7;
-    }
-
-    .gateway:nth-child(4) h3 {
-      color: #774839;
-    }
-
-    .gateway:nth-child(4) p {
-      color: #765f57;
-    }
-
-    .gateway:nth-child(4) .gateway-arrow {
-      color: #a96850;
-    }
-
-    /* CARD 5 */
-
-    .gateway:nth-child(5) {
-      background: #e5e4e1;
-      border: 1px solid #c2c0bb;
-    }
-
-    .gateway:nth-child(5)::after {
-      background: rgba(69,69,69,0.09);
-    }
-
-    .gateway:nth-child(5) .gateway-icon {
-      background: #d1d0cc;
-    }
-
-    .gateway:nth-child(5) h3 {
-      color: #3f3f3f;
-    }
-
-    .gateway:nth-child(5) p {
-      color: #656460;
-    }
-
-    .gateway:nth-child(5) .gateway-arrow {
-      color: #555555;
-    }
-
-    /* CARD 6 */
-
-    .gateway:nth-child(6) {
-      background: #e1ebea;
-      border: 1px solid #b5ceca;
-    }
-
-    .gateway:nth-child(6)::after {
-      background: rgba(79,119,114,0.10);
-    }
-
-    .gateway:nth-child(6) .gateway-icon {
-      background: #c5d9d6;
-    }
-
-    .gateway:nth-child(6) h3 {
-      color: #3f6561;
-    }
-
-    .gateway:nth-child(6) p {
-      color: #60716f;
-    }
-
-    .gateway:nth-child(6) .gateway-arrow {
-      color: #4f7772;
-    }
-
-    /* HAKAMIDZO WAY */
-
-    .way {
-      background: var(--green);
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .way::before {
-      content: "H";
-      position: absolute;
-      right: -40px;
-      bottom: -100px;
-      font-size: 420px;
-      font-weight: 900;
-      color: rgba(255,255,255,0.025);
-      line-height: 1;
-    }
-
-    .way .section-heading h2 {
-      color: white;
-    }
-
-    .way .section-heading p {
-      color: rgba(255,255,255,0.68);
-    }
-
-    .way .eyebrow {
-      color: var(--gold-light);
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.12);
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .step {
-      padding: 30px 22px;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 18px;
-      background: rgba(255,255,255,0.055);
-      text-align: center;
-    }
-
-    .step-number {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      margin: 0 auto 18px;
-      background: var(--gold);
-      color: var(--green-dark);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-    }
-
-    .step h3 {
-      margin-bottom: 8px;
-      color: white;
-      font-size: 17px;
-    }
-
-    .step p {
-      font-size: 12px;
-      color: rgba(255,255,255,0.65);
-    }
-
-    /* TRUST */
-
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .trust-card {
-      padding: 32px;
-      border-radius: 20px;
-      background: var(--cream);
-      border: 1px solid rgba(18,60,50,0.08);
-    }
-
-    .trust-icon {
-      font-size: 34px;
-      margin-bottom: 18px;
-    }
-
-    .trust-card h3 {
-      color: var(--green);
-      margin-bottom: 9px;
-    }
-
-    .trust-card p {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    /* CTA */
-
-    .cta {
-      padding: 25px 0 90px;
-    }
-
-    .cta-box {
-      background:
-        radial-gradient(circle at 90% 20%, rgba(201,168,106,0.25), transparent 30%),
-        var(--cream);
-      border: 1px solid rgba(18,60,50,0.1);
-      border-radius: 28px;
-      padding: 60px 45px;
-      text-align: center;
-    }
-
-    .cta-box h2 {
-      max-width: 700px;
-      margin: 0 auto 15px;
-    }
-
-    .cta-box p {
-      max-width: 600px;
-      margin: 0 auto 28px;
-      color: var(--muted);
-    }
-
-    /* FOOTER */
-
-    footer {
-      background: var(--green-dark);
-      color: white;
-      padding: 55px 0 25px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 40px;
-      padding-bottom: 45px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .footer-brand .brand {
-      margin-bottom: 17px;
-    }
-
-    .footer-brand .brand-text strong {
-      color: white;
-    }
-
-    .footer-brand .brand-text span {
-      color: rgba(255,255,255,0.55);
-    }
-
-    .footer-brand p {
-      max-width: 320px;
-      color: rgba(255,255,255,0.55);
-      font-size: 13px;
-    }
-
-    .footer-column h4 {
-      color: var(--gold-light);
-      font-size: 12px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 17px;
-    }
-
-    .footer-column a {
-      display: block;
-      color: rgba(255,255,255,0.62);
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-
-    .footer-column a:hover {
-      color: white;
-    }
-
-    .copyright {
-      padding-top: 22px;
-      color: rgba(255,255,255,0.4);
-      font-size: 11px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 900px) {
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding: 60px 0;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .network {
-        min-height: 390px;
-      }
-
-      .gateway-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .steps {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .trust-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
+  <title>Hakamidzo - Connect, let's go.</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Playfair Display for headings & Inter for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            hakaDark: '#0B2523',
+            hakaGreen: '#113330',
+            hakaGold: '#C5A059',
+            hakaGoldLight: '#E6D7B8',
+            hakaBg: '#F8F5EE',
+            hakaCardBg: '#133834',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
       }
     }
+  </script>
+</head>
+<body class="bg-hakaBg text-hakaDark font-sans antialiased selection:bg-hakaGold selection:text-white">
 
-    @media (max-width: 600px) {
-
-      .container {
-        width: min(100% - 28px, 1180px);
-      }
-
-      .nav {
-        min-height: 68px;
-      }
-
-      .logo {
-        width: 42px;
-        height: 42px;
-      }
-
-      .brand-text strong {
-        font-size: 15px;
-      }
-
-      .hero {
-        padding: 48px 0 35px;
-      }
-
-      h1 {
-        font-size: 47px;
-        letter-spacing: -2px;
-      }
-
-      .hero-copy {
-        font-size: 16px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .network {
-        transform: scale(0.83);
-        margin: -30px -35px;
-      }
-
-      .gateway-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .steps {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding: 65px 0;
-      }
-
-      .cta {
-        padding: 10px 0 65px;
-      }
-
-      .cta-box {
-        padding: 45px 22px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .copyright {
-        display: block;
-      }
-
-      .copyright span {
-        display: block;
-        margin-bottom: 7px;
-      }
-    }
-  </style></head><body>  <!-- HEADER -->  <header>
-    <div class="container nav">  <a href="/" class="brand">
-    <div class="logo">H</div>
-
-    <div class="brand-text">
-      <strong>HAKAMIDZO</strong>
-      <span>Connect, let's go.</span>
-    </div>
-  </a>
-
-  <nav class="nav-links">
-    <a href="#gateways">I need something</a>
-    <a href="#gateways">Explore</a>
-    <a href="#gateways">I can supply</a>
-    <a href="#gateways">Partner</a>
-  </nav>
-
-</div>
-
-  </header>  <!-- HERO -->  <main><section class="hero">
-
-  <div class="container hero-grid">
-
-    <div>
-
-      <div class="eyebrow">
-        GLOBAL MARKETPLACE
-      </div>
-
-      <h1>
-        ONE PLATFORM.<br>
-        MANY <span>POSSIBILITIES.</span>
-      </h1>
-
-      <p class="hero-copy">
-        Hakamidzo brings buyers, businesses, suppliers and partners
-        together to make sourcing, procurement and trade simple.
-      </p>
-
-      <div class="hero-buttons">
-
-        <a class="btn btn-primary" href="#gateways">
-          Explore Hakamidzo
-        </a>
-
-        <a class="btn btn-secondary" href="#gateways">
-          I need something
-        </a>
-
-      </div>
-
-    </div>
-
-
-    <!-- CONNECTION VISUAL -->
-
-    <div class="network">
-
-      <div class="network-ring">
-
-        <div class="connection-line line-top"></div>
-        <div class="connection-line line-right"></div>
-        <div class="connection-line line-bottom"></div>
-        <div class="connection-line line-left"></div>
-
-        <div class="network-center">
+  <!-- HEADER / NAVIGATION -->
+  <header class="w-full bg-hakaBg/90 backdrop-blur-md sticky top-0 z-50 border-b border-hakaGold/20">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-hakaDark text-hakaGold font-serif font-bold text-xl flex items-center justify-center rounded shadow-sm">
           H
         </div>
+        <div>
+          <span class="font-serif font-bold text-lg tracking-wide block leading-none">HAKAMIDZO</span>
+          <span class="text-[10px] tracking-widest text-hakaDark/70 uppercase font-medium">Connect, let's go.</span>
+        </div>
+      </div>
 
-        <div class="node node-top">
+      <!-- Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-hakaDark">
+        <a href="buyer.html" class="hover:text-hakaGold transition-colors">I need something</a>
+        <a href="explore.html" class="hover:text-hakaGold transition-colors">Explore</a>
+        <a href="supplier.html" class="hover:text-hakaGold transition-colors">I can supply</a>
+        <a href="partner.html" class="hover:text-hakaGold transition-colors">Partner</a>
+      </nav>
 
-          <div class="icon">
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center">
+        <button class="text-hakaDark focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION WITH CONNECTED NODES GRAPHIC -->
+  <section class="relative overflow-hidden pt-12 pb-20 px-6 border-b border-hakaGold/15">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Content -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-hakaGold/15 border border-hakaGold/30 text-xs font-semibold tracking-wider text-hakaDark uppercase">
+          <span class="w-2 h-2 rounded-full bg-hakaGold"></span>
+          Global Marketplace
+        </div>
+        <h1 class="font-serif text-5xl lg:text-7xl font-bold tracking-tight text-hakaDark leading-[1.08]">
+          ONE PLATFORM. <br>
+          MANY <span class="text-hakaGold italic font-normal">POSSIBILITIES.</span>
+        </h1>
+        <p class="text-lg text-hakaDark/80 max-w-xl font-light leading-relaxed">
+          Hakamidzo brings buyers, businesses, suppliers and partners together to make sourcing, procurement and trade simple.
+        </p>
+      </div>
+
+      <!-- Right Graphic Node (Professional Connected Hub Design matching sketch) -->
+      <div class="lg:col-span-5 flex justify-center py-6">
+        <div class="relative w-[340px] h-[340px] flex items-center justify-center">
+          
+          <!-- Outer Circular Pathway Ring -->
+          <div class="absolute inset-4 border border-hakaGold/40 rounded-full"></div>
+
+          <!-- Connecting Axis Lines (North-South & East-West) -->
+          <div class="absolute top-12 bottom-12 w-[2px] bg-hakaGold/50"></div>
+          <div class="absolute left-12 right-12 h-[2px] bg-hakaGold/50"></div>
+
+          <!-- Center Node "H" -->
+          <div class="w-16 h-16 bg-hakaDark rounded-full shadow-xl flex items-center justify-center text-hakaGold font-serif font-bold text-2xl z-20 border-2 border-hakaGold">
+            H
+          </div>
+
+          <!-- Top Node: Buyers (North) -->
+          <a href="buyer.html" class="absolute top-0 bg-white border border-hakaGold/30 shadow-lg rounded-2xl p-3 flex flex-col items-center text-center w-32 z-20 hover:scale-105 transition-transform">
+            <span class="text-base mb-0.5">🛒</span>
+            <span class="text-[10px] font-bold text-hakaDark tracking-wider">BUYERS</span>
+            <span class="text-[9px] text-hakaDark/60">Need something?</span>
+          </a>
+
+          <!-- Right Node: Business (East) -->
+          <a href="explore.html" class="absolute right-0 bg-white border border-hakaGold/30 shadow-lg rounded-2xl p-3 flex flex-col items-center text-center w-32 z-20 hover:scale-105 transition-transform">
+            <span class="text-base mb-0.5">🏢</span>
+            <span class="text-[10px] font-bold text-hakaDark tracking-wider">BUSINESS</span>
+            <span class="text-[9px] text-hakaDark/60">Grow & trade</span>
+          </a>
+
+          <!-- Bottom Node: Suppliers (South) -->
+          <a href="supplier.html" class="absolute bottom-0 bg-white border border-hakaGold/30 shadow-lg rounded-2xl p-3 flex flex-col items-center text-center w-32 z-20 hover:scale-105 transition-transform">
+            <span class="text-base mb-0.5">📦</span>
+            <span class="text-[10px] font-bold text-hakaDark tracking-wider">SUPPLIERS</span>
+            <span class="text-[9px] text-hakaDark/60">Can supply</span>
+          </a>
+
+          <!-- Left Node: Partners (West) -->
+          <a href="partner.html" class="absolute left-0 bg-white border border-hakaGold/30 shadow-lg rounded-2xl p-3 flex flex-col items-center text-center w-32 z-20 hover:scale-105 transition-transform">
+            <span class="text-base mb-0.5">🤝</span>
+            <span class="text-[10px] font-bold text-hakaDark tracking-wider">PARTNERS</span>
+            <span class="text-[9px] text-hakaDark/60">Help connect</span>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GATEWAY CARDS GRID (Distinct Links for Each Card) -->
+  <section class="py-20 px-6 max-w-7xl mx-auto">
+    <div class="text-center space-y-3 mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-hakaGold/15 border border-hakaGold/30 text-xs font-semibold tracking-wider text-hakaDark uppercase">
+        <span class="w-2 h-2 rounded-full bg-hakaGold"></span>
+        Start Here
+      </div>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-hakaDark">Where the world connects.</h2>
+      <p class="text-sm text-hakaDark/70">Choose your gateway into Hakamidzo.</p>
+    </div>
+
+    <!-- Grid Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Card 1: I Need Something -> Links to buyer page -->
+      <a href="buyer.html" class="group bg-hakaDark text-white p-8 rounded-2xl relative overflow-hidden flex flex-col justify-between min-h-[300px] shadow-xl border border-hakaGold/20 hover:border-hakaGold transition-all">
+        <div class="relative z-10 space-y-5">
+          <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-hakaDark shadow-md text-3xl">
             🛒
           </div>
-
-          <strong>
-            BUYERS
-          </strong>
-
-          <small>
-            Need something?
-          </small>
-
+          <h3 class="font-serif text-xl font-bold tracking-wide">I NEED SOMETHING</h3>
+          <p class="text-xs text-white/80 font-light leading-relaxed">
+            Tell us what you are looking for and let the Hakamidzo network help source it.
+          </p>
         </div>
+        <div class="relative z-10 pt-6 flex items-center justify-between border-t border-white/10 mt-6">
+          <span class="text-xs font-semibold tracking-widest text-hakaGold uppercase group-hover:translate-x-1 transition-transform">Start a request</span>
+          <span class="text-hakaGold text-lg font-bold">→</span>
+        </div>
+      </a>
 
-
-        <div class="node node-right">
-
-          <div class="icon">
-            🏢
+      <!-- Card 2: Explore Hakamidzo -> Links to explore/desktop view page -->
+      <a href="explore.html" class="group bg-gradient-to-br from-[#856536] to-[#593e1b] text-white p-8 rounded-2xl relative overflow-hidden flex flex-col justify-between min-h-[300px] shadow-xl border border-hakaGold/30 hover:border-white transition-all">
+        <div class="relative z-10 space-y-5">
+          <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-hakaDark shadow-md text-3xl">
+            🖥️
           </div>
-
-          <strong>
-            BUSINESSES
-          </strong>
-
-          <small>
-            Grow & trade
-          </small>
-
+          <h3 class="font-serif text-xl font-bold tracking-wide">EXPLORE HAKAMIDZO</h3>
+          <p class="text-xs text-white/90 font-light leading-relaxed">
+            Discover products, opportunities, connections and the growing Hakamidzo marketplace.
+          </p>
         </div>
+        <div class="relative z-10 pt-6 flex items-center justify-between border-t border-white/15 mt-6">
+          <span class="text-xs font-semibold tracking-widest text-white uppercase group-hover:translate-x-1 transition-transform">Explore</span>
+          <span class="text-lg font-bold">→</span>
+        </div>
+      </a>
 
-
-        <div class="node node-bottom">
-
-          <div class="icon">
+      <!-- Card 3: I Can Supply -> Links to supplier page -->
+      <a href="supplier.html" class="group bg-hakaDark text-white p-8 rounded-2xl relative overflow-hidden flex flex-col justify-between min-h-[300px] shadow-xl border border-hakaGold/20 hover:border-hakaGold transition-all">
+        <div class="relative z-10 space-y-5">
+          <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-hakaDark shadow-md text-3xl">
             📦
           </div>
-
-          <strong>
-            SUPPLIERS
-          </strong>
-
-          <small>
-            Can supply
-  
-        </small>
-
+          <h3 class="font-serif text-xl font-bold tracking-wide">I CAN SUPPLY</h3>
+          <p class="text-xs text-white/80 font-light leading-relaxed">
+            Connect your products and supply capabilities with people and businesses looking for them.
+          </p>
         </div>
+        <div class="relative z-10 pt-6 flex items-center justify-between border-t border-white/10 mt-6">
+          <span class="text-xs font-semibold tracking-widest text-hakaGold uppercase group-hover:translate-x-1 transition-transform">Join supplier network</span>
+          <span class="text-hakaGold text-lg font-bold">→</span>
+        </div>
+      </a>
 
-
-        <div class="node node-left">
-
-          <div class="icon">
+      <!-- Card 4: Become a Partner -> Links to partner page -->
+      <a href="partner.html" class="group bg-hakaDark text-white p-8 rounded-2xl relative overflow-hidden flex flex-col justify-between min-h-[300px] shadow-xl border border-hakaGold/20 hover:border-hakaGold transition-all">
+        <div class="relative z-10 space-y-5">
+          <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-hakaDark shadow-md text-3xl">
             🤝
           </div>
-
-          <strong>
-            PARTNERS
-          </strong>
-
-          <small>
-            Help connect
-          </small>
-
+          <h3 class="font-serif text-xl font-bold tracking-wide">BECOME A PARTNER</h3>
+          <p class="text-xs text-white/80 font-light leading-relaxed">
+            Help move real transactions forward and participate when your involvement contributes to completion.
+          </p>
         </div>
+        <div class="relative z-10 pt-6 flex items-center justify-between border-t border-white/10 mt-6">
+          <span class="text-xs font-semibold tracking-widest text-hakaGold uppercase group-hover:translate-x-1 transition-transform">Become a partner</span>
+          <span class="text-hakaGold text-lg font-bold">→</span>
+        </div>
+      </a>
 
+      <!-- Card 5: Already Have An Account -> Links to signin page -->
+      <a href="signin.html" class="group bg-hakaDark text-white p-8 rounded-2xl relative overflow-hidden flex flex-col justify-between min-h-[300px] shadow-xl border border-hakaGold/20 hover:border-hakaGold transition-all">
+        <div class="relative z-10 space-y-5">
+          <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-hakaDark shadow-md text-3xl">
+            👤
+          </div>
+          <h3 class="font-serif text-xl font-bold tracking-wide">ALREADY HAVE AN ACCOUNT?</h3>
+          <p class="text-xs text-white/80 font-light leading-relaxed">
+            Sign in and continue managing your Hakamidzo activity.
+          </p>
+        </div>
+        <div class="relative z-10 pt-6 flex items-center justify-between border-t border-white/10 mt-6">
+          <span class="text-xs font-semibold tracking-widest text-hakaGold uppercase group-hover:translate-x-1 transition-transform">Sign in</span>
+          <span class="text-hakaGold text-lg font-bold">→</span>
+        </div>
+      </a>
+
+      <!-- Card 6: Reviews & Support -> Links to support page -->
+      <a href="support.html" class="group bg-gradient-to-br from-[#856536] to-[#593e1b] text-white p-8 rounded-2xl relative overflow-hidden flex flex-col justify-between min-h-[300px] shadow-xl border border-hakaGold/30 hover:border-white transition-all">
+        <div class="relative z-10 space-y-5">
+          <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-hakaDark shadow-md text-3xl">
+            💬
+          </div>
+          <h3 class="font-serif text-xl font-bold tracking-wide">REVIEWS & SUPPORT</h3>
+          <p class="text-xs text-white/90 font-light leading-relaxed">
+            Share your experience, find help and stay connected with Hakamidzo.
+          </p>
+        </div>
+        <div class="relative z-10 pt-6 flex items-center justify-between border-t border-white/15 mt-6">
+          <span class="text-xs font-semibold tracking-widest text-white uppercase group-hover:translate-x-1 transition-transform">Get support</span>
+          <span class="text-lg font-bold">→</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- THE HAKAMIDZO WAY (4-STEP PROCESS) -->
+  <section class="py-20 px-6 bg-hakaGold/5 border-y border-hakaGold/15">
+    <div class="max-w-7xl mx-auto space-y-12">
+      
+      <div class="text-center space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-hakaGold/15 border border-hakaGold/30 text-xs font-semibold tracking-wider text-hakaDark uppercase">
+          <span class="w-2 h-2 rounded-full bg-hakaGold"></span>
+          The Hakamidzo Way
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-hakaDark">From need to completion.</h2>
+        <p class="text-sm text-hakaDark/70">A simple path designed to keep transactions moving.</p>
+      </div>
+
+      <!-- Steps Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+        <div class="bg-white p-6 rounded-2xl border border-hakaGold/20 shadow-sm text-center space-y-4 relative">
+          <div class="w-10 h-10 mx-auto bg-hakaGold text-white font-serif font-bold rounded-full flex items-center justify-center shadow-md">1</div>
+          <h3 class="font-serif font-bold text-lg text-hakaDark">NEED</h3>
+          <p class="text-xs text-hakaDark/70 leading-relaxed font-light">Someone needs a product, item or solution.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-hakaGold/20 shadow-sm text-center space-y-4 relative">
+          <div class="w-10 h-10 mx-auto bg-hakaGold text-white font-serif font-bold rounded-full flex items-center justify-center shadow-md">2</div>
+          <h3 class="font-serif font-bold text-lg text-hakaDark">CONNECT</h3>
+          <p class="text-xs text-hakaDark/70 leading-relaxed font-light">Hakamidzo brings the right people together.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-hakaGold/20 shadow-sm text-center space-y-4 relative">
+          <div class="w-10 h-10 mx-auto bg-hakaGold text-white font-serif font-bold rounded-full flex items-center justify-center shadow-md">3</div>
+          <h3 class="font-serif font-bold text-lg text-hakaDark">MOVE</h3>
+          <p class="text-xs text-hakaDark/70 leading-relaxed font-light">Suppliers and partners help move the transaction forward.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-hakaGold/20 shadow-sm text-center space-y-4 relative">
+          <div class="w-10 h-10 mx-auto bg-hakaGold text-white font-serif font-bold rounded-full flex items-center justify-center shadow-md">4</div>
+          <h3 class="font-serif font-bold text-lg text-hakaDark">COMPLETE</h3>
+          <p class="text-xs text-hakaDark/70 leading-relaxed font-light">The transaction reaches successful completion.</p>
+        </div>
       </div>
 
     </div>
+  </section>
 
-  </div>
-
-</section>
-
-
-<!-- GATEWAYS -->
-
-<section class="gateways" id="gateways">
-
-  <div class="container">
-
-    <div class="section-heading">
-
-      <div class="eyebrow">
-        START HERE
-      </div>
-
-      <h2>
-        Where the world connects.
-      </h2>
-
-      <p>
-        Choose your gateway into Hakamidzo.
-      </p>
-
-    </div>
-
-
-    <div class="gateway-grid">
-
-
-      <!-- CARD 1 -->
-
-      <a class="gateway" href="/buyer-request">
-
-        <div class="gateway-icon">
-          🛒
+  <!-- FOOTER -->
+  <footer class="bg-hakaDark text-white pt-16 pb-12 px-6 border-t border-hakaGold/20 mt-12">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/10">
+      <div class="md:col-span-5 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-hakaGold text-hakaDark font-serif font-bold text-xl flex items-center justify-center rounded">H</div>
+          <div>
+            <span class="font-serif font-bold text-lg tracking-wide block leading-none">HAKAMIDZO</span>
+            <span class="text-[10px] tracking-widest text-white/60 uppercase font-medium">Connect, let's go.</span>
+          </div>
         </div>
-
-        <h3>
-          I NEED SOMETHING
-        </h3>
-
-        <p>
-          Tell us what you are looking for and let the Hakamidzo network help source it.
+        <p class="text-xs text-white/70 max-w-sm font-light leading-relaxed">
+          A global marketplace connecting buyers, suppliers and partners to make sourcing, procurement and trade simple.
         </p>
+      </div>
 
-        <div class="gateway-arrow">
+      <div class="md:col-span-7 grid grid-cols-3 gap-8">
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-hakaGold mb-4">Marketplace</h4>
+          <ul class="space-y-2 text-xs text-white/70">
+            <li><a href="explore.html" class="hover:text-white transition-colors">Explore</a></li>
+            <li><a href="buyer.html" class="hover:text-white transition-colors">I need something</a></li>
+            <li><a href="supplier.html" class="hover:text-white transition-colors">I can supply</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-hakaGold mb-4">Network</h4>
+          <ul class="space-y-2 text-xs text-white/70">
+            <li><a href="partner.html" class="hover:text-white transition-colors">Partners</a></li>
+            <li><a href="support.html" class="hover:text-white transition-colors">Support</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-hakaGold mb-4">Hakamidzo</h4>
+          <ul class="space-y-2 text-xs text-white/70">
+            <li><a href="#" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">How it works</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/50">
+      <p>© 2026 Hakamidzo Global. All rights reserved.</p>
+      <p class="mt-2 sm:mt-0">Hakamidzo — Connect, let's go.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
